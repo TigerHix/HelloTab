@@ -1,14 +1,9 @@
 <template>
   <div>
-  <b-container>
+  <b-container fluid>
     <b-row>
-      <b-col md="6">
+      <b-col md="8">
         <b-card-group columns>
-          <Reddit/>
-          <Reddit/>
-          <Reddit/>
-          <Reddit/>
-          <Reddit/>
           <Reddit/>
         </b-card-group>
       </b-col>
