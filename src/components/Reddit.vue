@@ -1,5 +1,6 @@
 <template>
   <Card>
+    <div slot="title">Reddit</div>
     <p class="card-text">
       Reddit Test
     </p>
