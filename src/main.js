@@ -17,3 +17,7 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+
+import { login } from '@/utils/outlook.js'
+login()
