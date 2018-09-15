@@ -66,7 +66,6 @@
     import SimpleBar from 'simplebar';
     import 'simplebar/dist/simplebar.css';
     export default {
-        name: 'home',
         data() {
             return {
                 threads: []
@@ -76,9 +75,10 @@
             Card
         },
         mounted() {
-            axios.get('https://www.reddit.com/r/purdue/hot.json')
+            axios.get('https://www.reddit.com/r/funny/hot.json')
                 .then(response => {
                     response.data.data.children.forEach(item => {
+                        if (item.data.pinned || item.data.stickied) return;
                         item.data.timeago = moment(item.data.created_utc * 1000).fromNow();
                         if (item.data.preview && item.data.preview.images && item.data.preview.images[0] && item.data.preview.images[0].source) {
                             if (!item.data.preview.images[0].source.url.includes('.gif'))

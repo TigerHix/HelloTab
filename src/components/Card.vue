@@ -7,7 +7,7 @@
                             width: 100%;
                             height: 100%;
                             border-radius: 4px;
-                            background: linear-gradient(to left, #ff4400, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                            background: linear-gradient(to left, #ff4400, #4568DC);
                             ">
 
             </div>
