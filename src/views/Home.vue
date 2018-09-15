@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home ml-3 mt-3">
     <Reddit/>
   </div>
 </template>
