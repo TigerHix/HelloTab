@@ -5,6 +5,7 @@
       <b-col md="8">
         <b-card-group columns>
           <Reddit/>
+          <ToDoList/>
         </b-card-group>
       </b-col>
     </b-row>
@@ -28,10 +29,12 @@
 <script>
 import axios from 'axios'
 import Reddit from '@/components/Reddit'
+import ToDoList from '@/components/ToDoList'
 export default {
   name: 'home',
   components: {
-    Reddit
+    Reddit,
+    ToDoList,
   },
   data() {
     return {
