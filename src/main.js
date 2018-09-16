@@ -17,6 +17,13 @@ import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue);
 
+
+import VueIziToast from 'vue-izitoast';
+
+import 'izitoast/dist/css/iziToast.css';
+
+Vue.use(VueIziToast);
+
 import './main.scss'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 

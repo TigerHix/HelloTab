@@ -28,7 +28,7 @@
     import Calendar from '@/components/Calendar'
     import Weather from '@/components/Weather'
     import Dining from '@/components/Dining'
-    import {live2dSprite, initModel, modelIndex, renderer} from '@/utils/pa'
+    import {live2dSprite, initModel, modelIndex, renderer, getRandomInt} from '@/utils/pa'
     export default {
         components: {
             ToDoList,
@@ -37,7 +37,7 @@
             Dining
         },
         mounted() {
-            iziToast.settings({
+            let settings = {
                 id: 'show',
                 class: 'message',
                 progressBar: false,
@@ -46,11 +46,11 @@
                 balloon: true,
                 closeOnEscape: true,
                 closeOnClick: true,
-            });
+            };
 
             var skippedIntro = false;
 
-            setTimeout(function () {
+            setTimeout( () => {
                 if (skippedIntro) return;
                 switch (modelIndex) {
                     case 0:
@@ -64,13 +64,10 @@
                         break;
                 }
 
-                iziToast.show({
-                    message: 'Good evening, Tiger!',
-                    timeout: 4000,
-                });
+                this.$toast.show('Good evening, Tiger!');
             }, 1000);
 
-            setTimeout(function () {
+            setTimeout(() => {
                 if (skippedIntro) return;
                 switch (modelIndex) {
                     case 0:
@@ -83,13 +80,10 @@
                         live2dSprite.startRandomMotionOnce('shake');
                         break;
                 }
-                iziToast.show({
-                    message: 'Tomorrow will be <span style="color: lightskyblue; font-weight: bold">raining</span>. Don\'t forget your umbrella!',
-                    timeout: 6000,
-                });
+                this.$toast.show('Tomorrow will be <span style="color: lightskyblue; font-weight: bold">raining</span>. Don\'t forget your umbrella!');
             }, 4000);
 
-            function onClick(evt) {
+            let onClick = (evt) => {
                 skippedIntro = true;
                 let point = null;
                 if (evt != null) point = evt.data.global;
@@ -105,27 +99,19 @@
                             live2dSprite.startRandomMotionOnce('touch');
                             break;
                     }
-                    iziToast.show({
-                        message: 'How can I help?',
-                        timeout: 4000,
+                    this.$toast.show('How can I help?','', {
                         buttons: [
-                            ['<button>Schedule</button>', function (instance, toast) {
+                            ['<button>Schedule</button>', (instance, toast)=> {
 
-                                iziToast.show({
-                                    message: '(This feature is still in development!)',
-                                    timeout: 3000
-                                });
+                                this.$toast.show("(This feature is still in development!)");
 
                             }, true],
-                            ['<button>Weather</button>', function (instance, toast) {
+                            ['<button>Weather</button>', (instance, toast)=> {
 
-                                iziToast.show({
-                                    message: '(This feature is still in development!)',
-                                    timeout: 3000
-                                });
+                                this.$toast.show('(This feature is still in development!)');
 
                             }],
-                            ['<button>Talk</button>', function (instance, toast) {
+                            ['<button>Talk</button>', (instance, toast)=> {
 
                                 const todoCount = 2;
                                 if (todoCount > 0 && getRandomInt(0, 1)) {
@@ -140,10 +126,7 @@
                                             live2dSprite.startRandomMotionOnce('touch');
                                             break;
                                     }
-                                    iziToast.show({
-                                        message: 'How come... You still have 2 tasks unfinished!',
-                                        timeout: 4000,
-                                    });
+                                    this.$toast.show('How come... You still have 2 tasks unfinished!');
                                 } else {
                                     const trivias = [
                                         "There is a Cat Café in Tokyo where customers pay ¥800 yen (~US$8) an hour to hang out with cats.",
@@ -154,10 +137,7 @@
                                         "Officially Japan and Russia are still at war as they haven't signed a peace treaty to end World War II due to the Kuril Islands dispute."
                                     ];
                                     const trivia = trivias[getRandomInt(0, trivias.length - 1)];
-                                    iziToast.show({
-                                        message: 'Do you know? ' + trivia,
-                                        timeout: 8000
-                                    });
+                                    this.$toast.show('Do you know? ' + trivia);
                                 }
                             }]
                         ]
