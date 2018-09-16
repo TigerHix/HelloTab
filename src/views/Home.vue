@@ -6,6 +6,7 @@
           <Reddit/>
           <ToDoList/>
           <Mail/>
+          <Dining/>
         </b-card-group>
       </b-col>
     </b-row>
@@ -30,12 +31,14 @@ import axios from 'axios'
 import Reddit from '@/components/Reddit'
 import ToDoList from '@/components/ToDoList'
 import Mail from '@/components/Mail'
+import Dining from '@/components/Dining'
 export default {
   name: 'home',
   components: {
     Reddit,
     ToDoList,
     Mail,
+    Dining,
   },
   data() {
     return {
