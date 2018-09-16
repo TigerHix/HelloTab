@@ -1,6 +1,7 @@
 <template>
-    <b-card style="max-width: 20rem;"
+    <b-card no-body style="max-width: 20rem;"
             class="bg-dark text-white">
+        <div slot="header"><slot name="title"></slot></div>
         <div style="opacity: 1;">
             <div style="
                             position: absolute;
@@ -37,12 +38,12 @@
         <slot/>
     </b-card>
 </template>
-<style>
-    .card {
-        border: none !important;
-        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .3) !important;
-    }
-    .card-body {
-        padding: 0 !important;
-    }
-</style>
+
+
+<script>
+export default {
+  props: {
+    title: String,
+  }
+}
+</script>

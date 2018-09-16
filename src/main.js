@@ -17,7 +17,7 @@ import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue);
 
-import 'bootstrap/dist/css/bootstrap.css'
+import './main.scss'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import 'simplebar';

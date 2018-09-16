@@ -1,5 +1,6 @@
 <template>
     <Card>
+      <div slot="title">Reddit</div>
         <p class="p-3 mb-0" style="font-weight: bold; font-size: 18px; z-index: 100; position: relative;">Reddit</p>
         <div id="reddit_threads" style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
 
