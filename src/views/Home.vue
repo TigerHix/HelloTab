@@ -1,5 +1,6 @@
 <template>
     <div style="overflow-y: hidden; overflow-x: hidden; background: #212529">
+    <b-button id="anime" to="pa">Anime</b-button>
         <!--<b-carousel id="background-carousel"
                     background="#ababab"
                     :interval="10000"
@@ -69,6 +70,12 @@ import Mail from '@/components/Mail'
 </script>
 
 <style lang="scss">
+    #anime {
+        position: fixed;
+        right: 2rem;
+        bottom: 2rem;
+        z-index: 100;
+    }
 
     body {
         overflow: hidden;

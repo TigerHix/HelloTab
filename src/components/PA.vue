@@ -1,7 +1,9 @@
 <template>
+    <div class="tester"></div>
 </template>
 
 <script>
+import {live2dSprite, initModel, modelIndex, renderer} from '@/utils/pa'
     export default {
         mounted() {
 
@@ -134,12 +136,10 @@
             }
 
             live2dSprite.on('click', (evt) => onClick(evt));
-            document.addEventListener("DOMContentLoaded", function (event) {
-                initModel();
-                renderer.view.onmousedown = function () {
-                    onClick();
-                };
-            });
+            initModel(this.$el);
+            renderer.view.onmousedown = function () {
+                onClick();
+            };
 
         }
     }
