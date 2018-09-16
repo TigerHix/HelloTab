@@ -6,7 +6,7 @@
 </template>
 <script async src="" charset="utf-8"></script>
 <script>
-import Card from '@/components/TwitterFeedCard'
+import Card from '@/components/Card'
 export default {
   name: 'home',
 
