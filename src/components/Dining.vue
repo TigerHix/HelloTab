@@ -49,9 +49,6 @@
                             court.icon = court.NextMeal.Name.includes("reakfast") ? "coffee" : "utensils";
                             return court.NextMeal.StartTime.diff(now, 'hours') < 12;
                         })
-                        .sort((a, b) => {
-                            return a.NextMeal.StartTime.isAfter(b.NextMeal.StartTime);
-                        });
                     console.log(JSON.parse(JSON.stringify(this.diningCourts)));
                 })
         }

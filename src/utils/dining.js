@@ -1,7 +1,10 @@
 import axios from 'axios'
 import moment from 'moment'
+
+let diningCourtsCache = null
 export function diningCourts () {
-	return axios.get('https://api.hfs.purdue.edu/menus/v2/locations')
+	if (!diningCourtsCache)
+	diningCourtsCache = axios.get('https://api.hfs.purdue.edu/menus/v2/locations')
 	.then(response => {
 		var courts = response.data.Location
 		var now = moment()
@@ -12,8 +15,12 @@ export function diningCourts () {
 			})
 			court.NextMeal = court.UpcomingMeals.find(meal => meal.EndTime.isAfter(now)) || court.UpcomingMeals.find(meal => meal.StartTime.isAfter(now)) || court.UpcomingMeals[0]
 		})
+		courts = courts.sort((a, b) => {
+                            return a.NextMeal.StartTime.isAfter(b.NextMeal.StartTime);
+                        });
 		return courts
 	})
+	return diningCourtsCache
 }
 
 export function diningMenu(court, date) {
