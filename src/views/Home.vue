@@ -23,12 +23,11 @@
                         <HackerNews/>
                         <GitHub/>
                         <Mail/>
-                        <TwitterFeed/>
                     </b-card-group>
                 </b-col>
-                <b-col lg="1" style="padding: 0 0 0 1rem; height: 100vh; width: 100%;  opacity: 0.3; margin: auto; display: flex; align-items: center;">
+                <b-col lg="1" style="padding: 1rem 0 0 1rem; height: 100vh; width: 100%;  opacity: 0.3; margin: auto; display: flex; align-items: flex-start;">
                     <b-button id="next-page" :to="{name:'secondary'}"
-                              style="border-radius: 0; height: 80px; width: 80px; border-radius: 40px; display: flex; align-items: center;"><font-awesome-icon icon="arrow-right" style="width: 100%; height: 100%; transform: scale(0.5, 0.5);"/></b-button>
+                              style="border-radius: 0; height: 75px; width: 75px; border-radius: 37.5px; display: flex; align-items: center;"><font-awesome-icon icon="arrow-right" style="width: 100%; height: 100%; transform: scale(0.5, 0.5);"/></b-button>
                 </b-col>
             </b-row>
         </b-container>
@@ -43,7 +42,7 @@
     import HackerNews from '@/components/HackerNews';
     import GitHub from '@/components/GitHub';
     import PA from '@/components/PA';
-    import TwitterFeed from '@/components/TwitterFeed';
+    import Twitter from '@/components/Twitter';
     export default {
         name: 'home',
         components: {
@@ -53,7 +52,7 @@
             GitHub,
             PA,
             Mail,
-            TwitterFeed,
+            Twitter,
         },
         data() {
             return {
