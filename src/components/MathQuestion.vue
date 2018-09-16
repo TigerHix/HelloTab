@@ -18,6 +18,7 @@
 <script>
 import axios from 'axios'
 import Card from '@/components/Card'
+import {live2dSprite, modelIndex} from '@/utils/pa'
 export default {
   name: 'home',
 
@@ -127,7 +128,18 @@ export default {
         this.btn2State = 0;
         this.question = "";
         this.choices = ["-", "-", "-", "-", "-"];
-        window.alert("Challenge over! Score: " + this.score);
+        switch (modelIndex) {
+                    case 0:
+                        live2dSprite.startRandomMotionOnce('flick_head');
+                        break;
+                    case 1:
+                        live2dSprite.startRandomMotionOnce('kime');
+                        break;
+                    case 2:
+                        live2dSprite.startRandomMotionOnce('shake');
+                        break;
+                }
+                    this.$toast.show(`Wow I can't believe you got ${this.score}!`)
       }
     },
 
