@@ -1,16 +1,15 @@
 <template>
-  <div>
   <b-container fluid>
     <b-row>
-      <b-col md="8">
+      <b-col md="12">
         <b-card-group columns>
           <Reddit/>
           <ToDoList/>
+          <Mail/>
         </b-card-group>
       </b-col>
     </b-row>
-  </b-container>
-  <b-carousel id="background-carousel"
+    <b-carousel id="background-carousel"
                 background="#ababab"
                 :interval="10000"
                 img-width="100%"
@@ -23,18 +22,20 @@
                         :img-src="'//www.bing.com' + image.url"
       ></b-carousel-slide>
     </b-carousel>
-</div>
+  </b-container>
 </template>
 
 <script>
 import axios from 'axios'
 import Reddit from '@/components/Reddit'
 import ToDoList from '@/components/ToDoList'
+import Mail from '@/components/Mail'
 export default {
   name: 'home',
   components: {
     Reddit,
     ToDoList,
+    Mail,
   },
   data() {
     return {
@@ -42,11 +43,10 @@ export default {
     }
   },
   mounted () {
-    //axios.get('https://crossorigin.me/https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
-    axios.get('/wallpaper.json')
+    axios.get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
     .then(response => {
       this.wallpapers = response.data.images
-    })
+    }) 
   },
 }
 </script>
@@ -54,11 +54,11 @@ export default {
 <style lang="scss">
   #background-carousel {
     z-index: -100;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     img {
       object-fit: cover;
