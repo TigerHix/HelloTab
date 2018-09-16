@@ -6,7 +6,7 @@
 </template>
 <script async src="" charset="utf-8"></script>
 <script>
-import Card from '@/components/TwitterFeedCard'
+import Card from '@/components/Card'
 export default {
   name: 'home',
 
@@ -23,9 +23,11 @@ export default {
   },
 
   mounted() {
+    /*
     var twitterFeedScript = document.createElement('script');
     twitterFeedScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
     document.head.appendChild(twitterFeedScript);
+    */
   },
 }
 </script>

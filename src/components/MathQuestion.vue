@@ -14,7 +14,7 @@
 </template>
 <script>
 import axios from 'axios'
-import Card from '@/components/MathQuestionCard'
+import Card from '@/components/Card'
 export default {
   name: 'home',
 
@@ -106,9 +106,11 @@ export default {
   },
 
   mounted() {
+    /*
     var mathJaxScript = document.createElement('script');
     twitterFeedScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML');
     document.head.appendChild(mathJaxScript);
+    */
   },
 }
 </script>

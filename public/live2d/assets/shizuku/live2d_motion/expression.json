@@ -1,0 +1,151 @@
+{
+	"DEFAULT":{
+		"FADE_IN" : 500 ,
+		"FADE_OUT" : 500 ,
+		"PARAMS" : {
+			"PARAM_EYE_L_OPEN" :	1.00,
+			"PARAM_EYE_R_OPEN" :	1.00,
+			"PARAM_EYE_BALL_FORM" :	0.00,
+			"PARAM_TEARS" :			0.00,
+
+			"PARAM_BROW_L_Y" :		0.50,
+			"PARAM_BROW_R_Y" :		0.50,
+			"PARAM_BROW_L_X" :		0.00,
+			"PARAM_BROW_R_X" :		0.00,
+
+			"PARAM_BROW_L_ANGLE" :	0.00,
+			"PARAM_BROW_R_ANGLE" :	0.00,
+			"PARAM_BROW_L_FORM" :	0.00,
+			"PARAM_BROW_R_FORM" :	0.00,
+
+			"PARAM_MOUTH_FORM" :	2.00,
+			"PARAM_MOUTH_Y" :		0.00,
+			"PARAM_MOUTH_IKARI" :	0.00
+		}
+	} ,
+	"A":{
+		"COMMENT" : "NORMAL" ,
+		"FADE_IN" : 500 ,
+		"FADE_OUT" : 500 ,
+		"PARAMS" : {
+			"PARAM_EYE_L_OPEN" :	1.00,
+			"PARAM_EYE_R_OPEN" :	1.00,
+			"PARAM_EYE_BALL_FORM" :	0.00,
+			"PARAM_TEARS" :			0.00,
+
+			"PARAM_BROW_L_Y" :		0.50,
+			"PARAM_BROW_R_Y" :		0.50,
+			"PARAM_BROW_L_X" :		0.00,
+			"PARAM_BROW_R_X" :		0.00,
+
+			"PARAM_BROW_L_ANGLE" :	0.00,
+			"PARAM_BROW_R_ANGLE" :	0.00,
+			"PARAM_BROW_L_FORM" :	0.00,
+			"PARAM_BROW_R_FORM" :	0.00,
+
+			"PARAM_MOUTH_FORM" :	2.00,
+			"PARAM_MOUTH_Y" :		0.00,
+			"PARAM_MOUTH_IKARI" :	0.00
+		}
+	} ,
+	"B":{	
+		"COMMENT" : "HAPPY" ,
+		"FADE_IN" : 500 ,
+		"FADE_OUT" : 500 ,
+		"PARAMS" : {
+			"PARAM_EYE_L_OPEN" :	1.00,
+			"PARAM_EYE_R_OPEN" :	1.00,
+			"PARAM_EYE_BALL_FORM" :	0.00,
+			"PARAM_TEARS" :			0.00,
+
+			"PARAM_BROW_L_Y" :		0.45,
+			"PARAM_BROW_R_Y" :		0.45,
+			"PARAM_BROW_L_X" :		0.20,
+			"PARAM_BROW_R_X" :		0.20,
+
+			"PARAM_BROW_L_ANGLE" :	0.70,
+			"PARAM_BROW_R_ANGLE" :	0.70,
+			"PARAM_BROW_L_FORM" :	1.00,
+			"PARAM_BROW_R_FORM" :	1.00,
+
+			"PARAM_MOUTH_FORM" :	1.00,
+			"PARAM_MOUTH_Y" :		0.00,
+			"PARAM_MOUTH_IKARI" :	0.00
+		}
+	} ,
+	"C":{	
+		"COMMENT" : "SLEEPY" ,
+		"FADE_IN" : 500 ,
+		"FADE_OUT" : 500 ,
+		"PARAMS" : {
+			"PARAM_EYE_L_OPEN" :	-0.50,
+			"PARAM_EYE_R_OPEN" :	-0.50,
+			"PARAM_EYE_BALL_FORM" :	0.00,
+			"PARAM_TEARS" :			0.00,
+
+			"PARAM_BROW_L_Y" :		0.35,
+			"PARAM_BROW_R_Y" :		0.35,
+			"PARAM_BROW_L_X" :		-0.45,
+			"PARAM_BROW_R_X" :		-0.45,
+
+			"PARAM_BROW_L_ANGLE" :	0.00,
+			"PARAM_BROW_R_ANGLE" :	0.00,
+			"PARAM_BROW_L_FORM" :	-0.30,
+			"PARAM_BROW_R_FORM" :	-0.30,
+
+			"PARAM_MOUTH_FORM" :	2.00,
+			"PARAM_MOUTH_Y" :		0.00,
+			"PARAM_MOUTH_IKARI" :	0.00
+		}
+	} ,
+	"D":{	
+		"COMMENT" : "SAD" ,
+		"FADE_IN" : 500 ,
+		"FADE_OUT" : 500 ,
+		"PARAMS" : {
+			"PARAM_EYE_L_OPEN" :	1.00,
+			"PARAM_EYE_R_OPEN" :	1.00,
+			"PARAM_EYE_BALL_FORM" :	0.00,
+			"PARAM_TEARS" :			0.00,
+
+			"PARAM_BROW_L_Y" :		0.18,
+			"PARAM_BROW_R_Y" :		0.18,
+			"PARAM_BROW_L_X" :		-0.55,
+			"PARAM_BROW_R_X" :		-0.55,
+
+			"PARAM_BROW_L_ANGLE" :	0.00,
+			"PARAM_BROW_R_ANGLE" :	0.00,
+			"PARAM_BROW_L_FORM" :	-1.00,
+			"PARAM_BROW_R_FORM" :	-1.00,
+
+			"PARAM_MOUTH_FORM" :	0.00,
+			"PARAM_MOUTH_Y" :		0.00,
+			"PARAM_MOUTH_IKARI" :	1.00
+		}
+	} ,
+	"E":{	
+		"COMMENT" : "ANGRY" ,
+		"FADE_IN" : 500 ,
+		"FADE_OUT" : 500 ,
+		"PARAMS" : {
+			"PARAM_EYE_L_OPEN" :	0.80,
+			"PARAM_EYE_R_OPEN" :	0.80,
+			"PARAM_EYE_BALL_FORM" :	0.00,
+			"PARAM_TEARS" :			1.00,
+
+			"PARAM_BROW_L_Y" :		-0.80,
+			"PARAM_BROW_R_Y" :		-0.80,
+			"PARAM_BROW_L_X" :		-0.80,
+			"PARAM_BROW_R_X" :		-0.80,
+
+			"PARAM_BROW_L_ANGLE" :	-1.00,
+			"PARAM_BROW_R_ANGLE" :	-1.00,
+			"PARAM_BROW_L_FORM" :	-1.00,
+			"PARAM_BROW_R_FORM" :	-1.00,
+
+			"PARAM_MOUTH_FORM" :	0.00,
+			"PARAM_MOUTH_Y" :		0.00,
+			"PARAM_MOUTH_IKARI" :	0.00
+		}
+	} 
+}
