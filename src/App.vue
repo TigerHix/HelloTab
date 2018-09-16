@@ -6,6 +6,12 @@
     </div>
 </template>
 
+<script>
+  export default {
+  }
+</script>
+
+
 <style>
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
@@ -24,5 +30,6 @@
 }
 .slide-leave-to {
   transform: translate(-100%, 0);
+  position: absolute;
 }
 </style>
