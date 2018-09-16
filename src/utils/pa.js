@@ -8,7 +8,7 @@ export const renderer = new PIXI.WebGLRenderer(
 );
 PIXI.settings.RESOLUTION = window.devicePixelRatio;
 
-export var modelIndex = 1;
+export var modelIndex = 0;
 
 const stage = new PIXI.Container();
 let models = {};

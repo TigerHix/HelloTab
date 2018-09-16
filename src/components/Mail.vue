@@ -14,8 +14,8 @@
                 <p class="secondary-text">{{mail.timeAgo + " from " +
                     truncateStr(mail.sender.emailAddress.name)}}</p>
             </div>
-        </div>
-        <!-- <b-button @click="login" style="position:relative;z-index: 512;margin: 1rem;">Click to sign in</b-button> -->
+        </div><!--
+        <b-button @click="login" style="position:relative;z-index: 512;margin: 1rem;">Click to sign in</b-button>-->
         <b-modal lazy size="lg" v-model="showMailModal" id="mail_detail"
                  :title="currentMail ? currentMail.subject : ''">
             <p v-if="currentMail" v-html="currentMail.body.content"></p>

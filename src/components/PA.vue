@@ -1,9 +1,10 @@
 <template>
-    <div class="tester"></div>
+    <div>
+    </div>
 </template>
 
 <script>
-import {live2dSprite, initModel, modelIndex, renderer, getRandomInt} from '@/utils/pa'
+    import {live2dSprite, initModel, modelIndex, renderer, getRandomInt} from '@/utils/pa'
     export default {
         mounted() {
             let settings = {
