@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Card from '@/components/ToDoListCard'
+import Card from '@/components/Card'
 export default {
   name: 'home',
 
