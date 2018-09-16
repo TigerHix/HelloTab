@@ -1,5 +1,5 @@
 <template>
-  <Card class="my-2" style="height:500px">
+  <Card class="my-2" style="height:550px">
    <p class="p-3 my-0" style="font-weight: bold; font-size: 18px; z-index: 100; position: relative;">Course Today</p>
    <ul class="p-2 my-0 ml-3" style="font-size: 15px; z-index: 100; position: relative;">
       <li v-for="event in todayEvents">

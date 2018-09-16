@@ -6,6 +6,8 @@
         <b-card-group columns>
           <Reddit/>
           <ToDoList/>
+          <Weather/>
+          <Calendar/>
         </b-card-group>
       </b-col>
     </b-row>
@@ -30,11 +32,15 @@
 import axios from 'axios'
 import Reddit from '@/components/Reddit'
 import ToDoList from '@/components/ToDoList'
+import Calendar from '@/components/Calendar'
+import Weather from '@/components/Weather'
 export default {
   name: 'home',
   components: {
     Reddit,
     ToDoList,
+    Weather,
+    Calendar
   },
   data() {
     return {
