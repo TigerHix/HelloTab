@@ -9,9 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(fas);
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 import BootstrapVue from 'bootstrap-vue'
 
@@ -26,5 +26,6 @@ import 'simplebar/dist/simplebar.css';
 new Vue({
     router,
     store,
+    el: '#app',
     render: h => h(App)
-}).$mount('#app')
+});
