@@ -1,7 +1,7 @@
 <template>
     <Card fromColor="#0078D7" toColor="rgba(0,0,0,0)">
         <div slot="title">Outlook</div>
-        <div id="email-list-group" style="padding-left: 0.5rem; padding-right: 0.5rem; height: 510px; overflow-y: scroll; overflow-x: hidden;">
+        <div id="email-list-group" style="padding-left: 0.5rem; padding-right: 0.5rem; height: 710px; overflow-y: scroll; overflow-x: hidden;">
             <div
                     class="card email-card text-dark"
                     style="border:none;"
@@ -14,8 +14,8 @@
                 <p class="secondary-text">{{mail.timeAgo + " from " +
                     truncateStr(mail.sender.emailAddress.name)}}</p>
             </div>
-        </div><!--
-        <b-button @click="login" style="position:relative;z-index: 512;margin: 1rem;">Click to sign in</b-button>-->
+        </div>
+        <!-- <b-button @click="login" style="position:relative;z-index: 512;margin: 1rem;">Click to sign in</b-button> -->
         <b-modal lazy size="lg" v-model="showMailModal" id="mail_detail"
                  :title="currentMail ? currentMail.subject : ''">
             <p v-if="currentMail" v-html="currentMail.body.content"></p>

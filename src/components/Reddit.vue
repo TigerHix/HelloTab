@@ -1,7 +1,7 @@
 <template>
     <Card fromColor="#ff4400" toColor="rgba(0,0,0,0)">
         <div slot="title">Reddit</div>
-        <div id="reddit_threads" style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
+        <div id="reddit_threads" style="height: 420px; overflow-y: scroll; overflow-x: hidden;">
 
             <div v-for="thread in threads" class="thread-card bg-dark text-white p-0 mx-2 mt-0 mb-2"
                  style="position: relative; overflow: hidden; z-index: 512">

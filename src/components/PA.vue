@@ -187,6 +187,7 @@
         position: absolute;
         bottom: 0;
         right: -160px;
+        z-index: 5120;
         image-rendering: optimizeSpeed;
         image-rendering: -moz-crisp-edges;
         image-rendering: -o-crisp-edges;

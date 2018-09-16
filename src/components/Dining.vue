@@ -8,7 +8,7 @@
                 <tr v-for="court in diningCourts" :key="court.LocationId">
                     <td style="padding-left: 1.25rem; padding-right: 1.25rem; line-height:1.0" scope=row>
                         <strong><a class="text-light" style="font-size: 14px;">{{court.Name}}</a></strong>
-                        <div>
+                        <div class="secondary-text">
                             <span style="font-size: 10px;" v-if="court.NextMeal.StartTime.isAfter(now)"><font-awesome-icon :icon="court.icon"/> {{court.NextMeal.Name}} starts
                                 {{court.NextMeal.StartTime.fromNow()}}</span>
                             <span style="font-size: 10px;" v-else><font-awesome-icon :icon="court.icon"/> {{court.NextMeal.Name}} ends {{court.NextMeal.EndTime.fromNow()}}</span>
