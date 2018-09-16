@@ -37,10 +37,10 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <p class="mb-0" style="font-size: 10px;white-space: pre-wrap;">{{ thread.timeago }}</p>
+                                <p class="mb-0 secondary-text" style="font-size: 10px;white-space: pre-wrap;">{{ thread.timeago }}</p>
                             </div>
                             <div class="col-sm-6">
-                                <p class="mb-0 float-right align-text-bottom" style="font-size: 10px;">
+                                <p class="mb-0 float-right align-text-bottom secondary-text" style="font-size: 10px;">
                                     <font-awesome-icon icon="arrow-up"/>
                                     {{ thread.score }}
                                     &nbsp;&nbsp;
@@ -89,7 +89,7 @@
                         }
                         this.threads.push(item.data);
                         this.$nextTick(function () {
-                            new SimpleBar(document.getElementById('reddit_threads'))
+                            //new SimpleBar(document.getElementById('reddit_threads'))
                         });
                     });
                 });

@@ -4,6 +4,7 @@
 <script>
     export default {
         mounted() {
+
             iziToast.settings({
                 id: 'show',
                 class: 'message',
@@ -19,7 +20,18 @@
 
             setTimeout(function () {
                 if (skippedIntro) return;
-                live2dSprite.startRandomMotionOnce(weeb ? 'tap_body' : "01");
+                switch (modelIndex) {
+                    case 0:
+                        live2dSprite.startRandomMotionOnce('tap_body');
+                        break;
+                    case 1:
+                        live2dSprite.startRandomMotionOnce('handwave');
+                        break;
+                    case 2:
+                        live2dSprite.startRandomMotionOnce('touch');
+                        break;
+                }
+
                 iziToast.show({
                     message: 'Good evening, Tiger!',
                     timeout: 4000,
@@ -28,41 +40,79 @@
 
             setTimeout(function () {
                 if (skippedIntro) return;
-                live2dSprite.startRandomMotionOnce(weeb ? 'flick_head' : "02");
+                switch (modelIndex) {
+                    case 0:
+                        live2dSprite.startRandomMotionOnce('flick_head');
+                        break;
+                    case 1:
+                        live2dSprite.startRandomMotionOnce('kime');
+                        break;
+                    case 2:
+                        live2dSprite.startRandomMotionOnce('shake');
+                        break;
+                }
                 iziToast.show({
-                    message: 'Tomorrow will be raining. Don\'t forget your umbrella!',
+                    message: 'Tomorrow will be <span style="color: lightskyblue; font-weight: bold">raining</span>. Don\'t forget your umbrella!',
                     timeout: 6000,
                 });
             }, 4000);
 
-            live2dSprite.on('click', (evt) => {
+            function onClick(evt) {
                 skippedIntro = true;
-                const point = evt.data.global;
-                if (live2dSprite.hitTest('body', point.x, point.y)) {
-                    var action = ['tap_body', 'tap_body', 'tap_body', 'pinch_in', 'pinch_out', 'shake'][getRandomInt(0, 6)];
-                    live2dSprite.startRandomMotionOnce(action);
-                    if (action == 'tap_body') {
-                        iziToast.show({
-                            message: 'How can I help?',
-                            timeout: 4000,
-                            buttons: [
-                                ['<button>Schedule</button>', function (instance, toast) {
+                let point = null;
+                if (evt != null) point = evt.data.global;
+                if ((point == null) || (modelIndex == 0 && live2dSprite.hitTest(null, point.x, point.y))) {
+                    switch (modelIndex) {
+                        case 0:
+                            live2dSprite.startRandomMotionOnce('tap_body');
+                            break;
+                        case 1:
+                            live2dSprite.startRandomMotionOnce('kime');
+                            break;
+                        case 2:
+                            live2dSprite.startRandomMotionOnce('touch');
+                            break;
+                    }
+                    iziToast.show({
+                        message: 'How can I help?',
+                        timeout: 4000,
+                        buttons: [
+                            ['<button>Schedule</button>', function (instance, toast) {
 
+                                iziToast.show({
+                                    message: '(This feature is still in development!)',
+                                    timeout: 3000
+                                });
+
+                            }, true],
+                            ['<button>Weather</button>', function (instance, toast) {
+
+                                iziToast.show({
+                                    message: '(This feature is still in development!)',
+                                    timeout: 3000
+                                });
+
+                            }],
+                            ['<button>Talk</button>', function (instance, toast) {
+
+                                const todoCount = 2;
+                                if (todoCount > 0 && getRandomInt(0, 1)) {
+                                    switch (modelIndex) {
+                                        case 0:
+                                            live2dSprite.startRandomMotionOnce('flick_head');
+                                            break;
+                                        case 1:
+                                            live2dSprite.startRandomMotionOnce('kime');
+                                            break;
+                                        case 2:
+                                            live2dSprite.startRandomMotionOnce('touch');
+                                            break;
+                                    }
                                     iziToast.show({
-                                        message: '(This feature is still in development!)',
-                                        timeout: 3000
+                                        message: 'How come... You still have 2 tasks unfinished!',
+                                        timeout: 4000,
                                     });
-
-                                }, true],
-                                ['<button>Weather</button>', function (instance, toast) {
-
-                                    iziToast.show({
-                                        message: '(This feature is still in development!)',
-                                        timeout: 3000
-                                    });
-
-                                }],
-                                ['<button>Talk</button>', function (instance, toast) {
+                                } else {
                                     const trivias = [
                                         "There is a Cat Café in Tokyo where customers pay ¥800 yen (~US$8) an hour to hang out with cats.",
                                         "There are 12 million pets in Japan, more than the number of children under 12 years old.",
@@ -76,22 +126,21 @@
                                         message: 'Do you know? ' + trivia,
                                         timeout: 8000
                                     });
-
-                                }]
-                            ]
-                        });
-                    } else {
-                        iziToast.show({
-                            message: 'How come... You still have 2 tasks unfinished!',
-                            timeout: 4000,
-                        });
-                    }
-                } else if (live2dSprite.hitTest('head', point.x, point.y)) {
-                    live2dSprite.startRandomMotionOnce('flick_head');
-                } else {
-
+                                }
+                            }]
+                        ]
+                    });
                 }
+            }
+
+            live2dSprite.on('click', (evt) => onClick(evt));
+            document.addEventListener("DOMContentLoaded", function (event) {
+                initModel();
+                renderer.view.onmousedown = function () {
+                    onClick();
+                };
             });
+
         }
     }
 </script>

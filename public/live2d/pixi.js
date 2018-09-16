@@ -785,7 +785,7 @@ function removeNode(p) {
 }
 
 function Node(i, x, y) {
-    // vertice index in coordinates array
+    // vertice modelIndex in coordinates array
     this.i = i;
 
     // vertex coordinates
@@ -1824,7 +1824,7 @@ function filter (xs, f) {
     return res;
 }
 
-// String.prototype.substr - negative index don't work in IE8
+// String.prototype.substr - negative modelIndex don't work in IE8
 var substr = 'ab'.substr(-1) === 'b'
     ? function (str, start, len) { return str.substr(start, len) }
     : function (str, start, len) {
@@ -3939,7 +3939,7 @@ process.umask = function() { return 0; };
 
 		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
 
-			// `index` is the index of the next character to be consumed.
+			// `modelIndex` is the modelIndex of the next character to be consumed.
 			// Decode a generalized variable-length integer into `delta`,
 			// which gets added to `i`. The overflow checking is easier
 			// if we increase `i` as we go, then subtract off its starting
@@ -4388,7 +4388,7 @@ exports.encode = exports.stringify = require('./encode');
  *
  * @function removeItems
  * @param {Array<*>} arr The target array
- * @param {number} startIdx The index to begin removing from (inclusive)
+ * @param {number} startIdx The modelIndex to begin removing from (inclusive)
  * @param {number} removeCount How many items to remove
  */
 module.exports = function removeItems(arr, startIdx, removeCount)
@@ -5144,8 +5144,8 @@ var Resource = function () {
      * @param {boolean} [options.metadata.skipSource=false] - Skips adding source(s) to the load element. This
      *      is useful if you want to pass in a `loadElement` that you already added load sources to.
      * @param {string|string[]} [options.metadata.mimeType] - The mime type to use for the source element of a video/audio
-     *      elment. If the urls are an array, you can pass this as an array as well where each index is the mime type to
-     *      use for the corresponding url index.
+     *      elment. If the urls are an array, you can pass this as an array as well where each modelIndex is the mime type to
+     *      use for the corresponding url modelIndex.
      */
 
 
@@ -6455,16 +6455,16 @@ function encodeBinary(input) {
         }
 
         // Get each encoded character, 6 bits at a time
-        // index 1: first 6 bits
+        // modelIndex 1: first 6 bits
         encodedCharIndexes[0] = bytebuffer[0] >> 2;
 
-        // index 2: second 6 bits (2 least significant bits from input byte 1 + 4 most significant bits from byte 2)
+        // modelIndex 2: second 6 bits (2 least significant bits from input byte 1 + 4 most significant bits from byte 2)
         encodedCharIndexes[1] = (bytebuffer[0] & 0x3) << 4 | bytebuffer[1] >> 4;
 
-        // index 3: third 6 bits (4 least significant bits from input byte 2 + 2 most significant bits from byte 3)
+        // modelIndex 3: third 6 bits (4 least significant bits from input byte 2 + 2 most significant bits from byte 3)
         encodedCharIndexes[2] = (bytebuffer[1] & 0x0f) << 2 | bytebuffer[2] >> 6;
 
-        // index 3: forth 6 bits (6 least significant bits from input byte 3)
+        // modelIndex 3: forth 6 bits (6 least significant bits from input byte 3)
         encodedCharIndexes[3] = bytebuffer[2] & 0x3f;
 
         // Determine whether padding happened, and adjust accordingly
@@ -6487,7 +6487,7 @@ function encodeBinary(input) {
         }
 
         // Now we will grab each appropriate character out of our keystring
-        // based on our index array and append it to the output string
+        // based on our modelIndex array and append it to the output string
         for (var _jnx = 0; _jnx < encodedCharIndexes.length; ++_jnx) {
             output += _keyStr.charAt(encodedCharIndexes[_jnx]);
         }
@@ -9136,17 +9136,17 @@ var Container = function (_DisplayObject) {
     };
 
     /**
-     * Adds a child to the container at a specified index. If the index is out of bounds an error will be thrown
+     * Adds a child to the container at a specified modelIndex. If the modelIndex is out of bounds an error will be thrown
      *
      * @param {PIXI.DisplayObject} child - The child to add
-     * @param {number} index - The index to place the child in
+     * @param {number} index - The modelIndex to place the child in
      * @return {PIXI.DisplayObject} The child that was added.
      */
 
 
     Container.prototype.addChildAt = function addChildAt(child, index) {
         if (index < 0 || index > this.children.length) {
-            throw new Error(child + 'addChildAt: The index ' + index + ' supplied is out of bounds ' + this.children.length);
+            throw new Error(child + 'addChildAt: The modelIndex ' + index + ' supplied is out of bounds ' + this.children.length);
         }
 
         if (child.parent) {
@@ -9191,10 +9191,10 @@ var Container = function (_DisplayObject) {
     };
 
     /**
-     * Returns the index position of a child DisplayObject instance
+     * Returns the modelIndex position of a child DisplayObject instance
      *
      * @param {PIXI.DisplayObject} child - The DisplayObject instance to identify
-     * @return {number} The index position of the child display object to identify
+     * @return {number} The modelIndex position of the child display object to identify
      */
 
 
@@ -9211,14 +9211,14 @@ var Container = function (_DisplayObject) {
     /**
      * Changes the position of an existing child in the display object container
      *
-     * @param {PIXI.DisplayObject} child - The child DisplayObject instance for which you want to change the index number
-     * @param {number} index - The resulting index number for the child display object
+     * @param {PIXI.DisplayObject} child - The child DisplayObject instance for which you want to change the modelIndex number
+     * @param {number} index - The resulting modelIndex number for the child display object
      */
 
 
     Container.prototype.setChildIndex = function setChildIndex(child, index) {
         if (index < 0 || index >= this.children.length) {
-            throw new Error('The index ' + index + ' supplied is out of bounds ' + this.children.length);
+            throw new Error('The modelIndex ' + index + ' supplied is out of bounds ' + this.children.length);
         }
 
         var currentIndex = this.getChildIndex(child);
@@ -9230,10 +9230,10 @@ var Container = function (_DisplayObject) {
     };
 
     /**
-     * Returns the child at the specified index
+     * Returns the child at the specified modelIndex
      *
-     * @param {number} index - The index to get the child at
-     * @return {PIXI.DisplayObject} The child at the given index, if any.
+     * @param {number} index - The modelIndex to get the child at
+     * @return {PIXI.DisplayObject} The child at the given modelIndex, if any.
      */
 
 
@@ -9285,9 +9285,9 @@ var Container = function (_DisplayObject) {
     };
 
     /**
-     * Removes a child from the specified index position.
+     * Removes a child from the specified modelIndex position.
      *
-     * @param {number} index - The index to get the child from
+     * @param {number} index - The modelIndex to get the child from
      * @return {PIXI.DisplayObject} The child that was removed.
      */
 
@@ -12818,7 +12818,7 @@ var GraphicsRenderer = function (_ObjectRenderer) {
                 this.graphicsDataPool.push(webGL.data[i]);
             }
 
-            // clear the array and reset the index..
+            // clear the array and reset the modelIndex..
             webGL.data.length = 0;
             webGL.lastIndex = 0;
         }
@@ -12960,7 +12960,7 @@ var WebGLGraphicsData = function () {
     this.buffer = _pixiGlCore2.default.GLBuffer.createVertexBuffer(gl);
 
     /**
-     * The index buffer
+     * The modelIndex buffer
      * @member {WebGLBuffer}
      */
     this.indexBuffer = _pixiGlCore2.default.GLBuffer.createIndexBuffer(gl);
@@ -18332,7 +18332,7 @@ var WebGLState = function () {
         this.defaultState[0] = 1;
 
         /**
-         * The current state index in the stack
+         * The current state modelIndex in the stack
          *
          * @member {number}
          * @private
@@ -20189,7 +20189,7 @@ var Quad = function () {
     this.vertexBuffer = _pixiGlCore2.default.GLBuffer.createVertexBuffer(gl, this.interleaved, gl.STATIC_DRAW);
 
     /**
-     * The index buffer
+     * The modelIndex buffer
      *
      * @member {glCore.GLBuffer}
      */
@@ -23873,7 +23873,7 @@ var TextMetrics = function () {
      * @param  {string}  char      The character
      * @param  {string}  nextChar  The next character
      * @param  {string}  token     The token/word the characters are from
-     * @param  {number}  index     The index in the token of the char
+     * @param  {number}  index     The modelIndex in the token of the char
      * @param  {boolean}  breakWords  The style attr break words
      * @return {boolean} whether to break word or not
      */
@@ -26175,7 +26175,7 @@ var Spritesheet = function () {
         this._frameKeys = Object.keys(this._frames);
 
         /**
-         * Current batch index being processed.
+         * Current batch modelIndex being processed.
          * @type {number}
          * @private
          */
@@ -26246,7 +26246,7 @@ var Spritesheet = function () {
      * Process a batch of frames
      *
      * @private
-     * @param {number} initialFrameIndex - The index of frame to start.
+     * @param {number} initialFrameIndex - The modelIndex of frame to start.
      */
 
 
@@ -31003,7 +31003,7 @@ var AnimatedSprite = function (_core$Sprite) {
     /**
      * Stops the AnimatedSprite and goes to a specific frame
      *
-     * @param {number} frameNumber - frame index to stop at
+     * @param {number} frameNumber - frame modelIndex to stop at
      */
 
 
@@ -31022,7 +31022,7 @@ var AnimatedSprite = function (_core$Sprite) {
     /**
      * Goes to a specific frame and begins playing the AnimatedSprite
      *
-     * @param {number} frameNumber - frame index to start at
+     * @param {number} frameNumber - frame modelIndex to start at
      */
 
 
@@ -31100,7 +31100,7 @@ var AnimatedSprite = function (_core$Sprite) {
     };
 
     /**
-     * Updates the displayed texture to match the current frame index
+     * Updates the displayed texture to match the current frame modelIndex
      *
      * @private
      */
@@ -31217,7 +31217,7 @@ var AnimatedSprite = function (_core$Sprite) {
         }
 
         /**
-        * The AnimatedSprites current frame index
+        * The AnimatedSprites current frame modelIndex
         *
         * @member {number}
         * @readonly
@@ -33631,11 +33631,11 @@ function generateFragBlurSource(kernelSize) {
     var fragSource = fragTemplate;
 
     var blurLoop = '';
-    var template = 'gl_FragColor += texture2D(uSampler, vBlurTexCoords[%index%]) * %value%;';
+    var template = 'gl_FragColor += texture2D(uSampler, vBlurTexCoords[%modelIndex%]) * %value%;';
     var value = void 0;
 
     for (var i = 0; i < kernelSize; i++) {
-        var blur = template.replace('%index%', i);
+        var blur = template.replace('%modelIndex%', i);
 
         value = i;
 
@@ -33672,13 +33672,13 @@ function generateVertBlurSource(kernelSize, x) {
     // let value;
 
     if (x) {
-        template = 'vBlurTexCoords[%index%] = aTextureCoord + vec2(%sampleIndex% * strength, 0.0);';
+        template = 'vBlurTexCoords[%modelIndex%] = aTextureCoord + vec2(%sampleIndex% * strength, 0.0);';
     } else {
-        template = 'vBlurTexCoords[%index%] = aTextureCoord + vec2(0.0, %sampleIndex% * strength);';
+        template = 'vBlurTexCoords[%modelIndex%] = aTextureCoord + vec2(0.0, %sampleIndex% * strength);';
     }
 
     for (var i = 0; i < kernelSize; i++) {
-        var blur = template.replace('%index%', i);
+        var blur = template.replace('%modelIndex%', i);
 
         // value = i;
 
@@ -38177,10 +38177,10 @@ var NineSlicePlane = function (_Plane) {
      * @param {CanvasImageSource} textureSource - The source to draw.
      * @param {number} w - width of the texture
      * @param {number} h - height of the texture
-     * @param {number} x1 - x index 1
-     * @param {number} y1 - y index 1
-     * @param {number} x2 - x index 2
-     * @param {number} y2 - y index 2
+     * @param {number} x1 - x modelIndex 1
+     * @param {number} y1 - y modelIndex 1
+     * @param {number} x2 - x modelIndex 2
+     * @param {number} y2 - y modelIndex 2
      */
 
 
@@ -38849,9 +38849,9 @@ var MeshSpriteRenderer = function () {
      *
      * @private
      * @param {PIXI.mesh.Mesh} mesh - the current mesh
-     * @param {number} index0 - the index of the first vertex
-     * @param {number} index1 - the index of the second vertex
-     * @param {number} index2 - the index of the third vertex
+     * @param {number} index0 - the modelIndex of the first vertex
+     * @param {number} index1 - the modelIndex of the second vertex
+     * @param {number} index2 - the modelIndex of the third vertex
      */
 
 
@@ -39309,7 +39309,7 @@ var ParticleContainer = function (_core$Container) {
         _classCallCheck(this, ParticleContainer);
 
         // Making sure the batch size is valid
-        // 65535 is max vertex index in the index buffer (see ParticleRenderer)
+        // 65535 is max vertex modelIndex in the modelIndex buffer (see ParticleRenderer)
         // so max number of particles is 65536 / 4 = 16384
         var _this = _possibleConstructorReturn(this, _core$Container.call(this));
 
@@ -39488,7 +39488,7 @@ var ParticleContainer = function (_core$Container) {
      * Set the flag that static data should be updated to true
      *
      * @private
-     * @param {number} smallestChildIndex - The smallest child index
+     * @param {number} smallestChildIndex - The smallest child modelIndex
      */
 
 
@@ -39842,7 +39842,7 @@ var ParticleBuffer = function () {
      * Uploads the dynamic properties.
      *
      * @param {PIXI.DisplayObject[]} children - The children to upload.
-     * @param {number} startIndex - The index to start at.
+     * @param {number} startIndex - The modelIndex to start at.
      * @param {number} amount - The number to upload.
      */
 
@@ -39861,7 +39861,7 @@ var ParticleBuffer = function () {
      * Uploads the static properties.
      *
      * @param {PIXI.DisplayObject[]} children - The children to upload.
-     * @param {number} startIndex - The index to start at.
+     * @param {number} startIndex - The modelIndex to start at.
      * @param {number} amount - The number to upload.
      */
 
@@ -39957,10 +39957,10 @@ var ParticleRenderer = function (_core$ObjectRenderer) {
     function ParticleRenderer(renderer) {
         _classCallCheck(this, ParticleRenderer);
 
-        // 65535 is max vertex index in the index buffer (see ParticleRenderer)
+        // 65535 is max vertex modelIndex in the modelIndex buffer (see ParticleRenderer)
         // so max number of particles is 65536 / 4 = 16384
-        // and max number of element in the index buffer is 16384 * 6 = 98304
-        // Creating a full index buffer, overhead is 98304 * 2 = 196Ko
+        // and max number of element in the modelIndex buffer is 16384 * 6 = 98304
+        // Creating a full modelIndex buffer, overhead is 98304 * 2 = 196Ko
         // let numIndices = 98304;
 
         /**
@@ -40170,7 +40170,7 @@ var ParticleRenderer = function (_core$ObjectRenderer) {
      * Uploads the verticies.
      *
      * @param {PIXI.DisplayObject[]} children - the array of display objects to render
-     * @param {number} startIndex - the index to start from in the children array
+     * @param {number} startIndex - the modelIndex to start from in the children array
      * @param {number} amount - the amount of children that will have their vertices uploaded
      * @param {number[]} array - The vertices to upload.
      * @param {number} stride - Stride to use for iteration.
@@ -40227,7 +40227,7 @@ var ParticleRenderer = function (_core$ObjectRenderer) {
     /**
      *
      * @param {PIXI.DisplayObject[]} children - the array of display objects to render
-     * @param {number} startIndex - the index to start from in the children array
+     * @param {number} startIndex - the modelIndex to start from in the children array
      * @param {number} amount - the amount of children that will have their positions uploaded
      * @param {number[]} array - The vertices to upload.
      * @param {number} stride - Stride to use for iteration.
@@ -40258,7 +40258,7 @@ var ParticleRenderer = function (_core$ObjectRenderer) {
     /**
      *
      * @param {PIXI.DisplayObject[]} children - the array of display objects to render
-     * @param {number} startIndex - the index to start from in the children array
+     * @param {number} startIndex - the modelIndex to start from in the children array
      * @param {number} amount - the amount of children that will have their rotation uploaded
      * @param {number[]} array - The vertices to upload.
      * @param {number} stride - Stride to use for iteration.
@@ -40282,7 +40282,7 @@ var ParticleRenderer = function (_core$ObjectRenderer) {
     /**
      *
      * @param {PIXI.DisplayObject[]} children - the array of display objects to render
-     * @param {number} startIndex - the index to start from in the children array
+     * @param {number} startIndex - the modelIndex to start from in the children array
      * @param {number} amount - the amount of children that will have their rotation uploaded
      * @param {number[]} array - The vertices to upload.
      * @param {number} stride - Stride to use for iteration.
@@ -40330,7 +40330,7 @@ var ParticleRenderer = function (_core$ObjectRenderer) {
     /**
      *
      * @param {PIXI.DisplayObject[]} children - the array of display objects to render
-     * @param {number} startIndex - the index to start from in the children array
+     * @param {number} startIndex - the modelIndex to start from in the children array
      * @param {number} amount - the amount of children that will have their rotation uploaded
      * @param {number[]} array - The vertices to upload.
      * @param {number} stride - Stride to use for iteration.

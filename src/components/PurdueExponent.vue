@@ -1,7 +1,7 @@
 <template>
     <Card fromColor="#C28E0E" toColor="rgba(0,0,0,0)">
         <div slot="title">Purdue Exponent</div>
-        <div id="exponent_posts" style="height: 650px; overflow-y: scroll; overflow-x: hidden;">
+        <div id="exponent_posts" style="height: 710px; overflow-y: scroll; overflow-x: hidden;">
             <div v-for="post in posts" class="post bg-dark text-white p-0 mx-2 mt-0 mb-2"
                  style="position: relative; overflow: hidden; z-index: 512">
 
@@ -35,7 +35,7 @@
                         </h3>
 
                         <div>
-                            <p class="mb-0" style="font-size: 10px;white-space: pre-wrap;">{{ post.timeago }}</p>
+                            <p class="mb-0 secondary-text" style="font-size: 10px;white-space: pre-wrap;">{{ post.timeago }}</p>
                         </div>
 
                     </div>

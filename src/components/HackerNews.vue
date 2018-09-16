@@ -2,8 +2,8 @@
     <Card fromColor="#ff6600" toColor="rgba(0,0,0,0)">
         <div slot="title">Hacker News</div>
         <div class="table-responsive">
-            <table id="hn_posts" class="table table-hover table-sm table-dark bg-dark table-borderless"
-                   style="white-space: nowrap; height: 200px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
+            <table id="hn_posts" class="table mb-2 table-hover table-sm table-dark bg-dark table-borderless"
+                   style="white-space: nowrap; height: 220px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
                 <tbody style="display: table; white-space: normal;">
                 <tr v-for="post in posts">
                     <td style="padding-left: 1.25rem; padding-right: 1.25rem; line-height:1.0" scope=row>
@@ -11,11 +11,11 @@
                             post.title }}</a></strong>
                         <div class="row mt-1">
                             <div class="col-sm-6">
-                                <p class="mb-0" style="font-size: 10px;white-space: pre-wrap;">{{ post.timeago
+                                <p class="mb-1" style="font-size: 10px;white-space: pre-wrap;">{{ post.timeago
                                     }}</p>
                             </div>
                             <div class="col-sm-6">
-                                <p class="mb-0 float-right align-text-bottom" style="font-size: 10px;">
+                                <p class="mb-0 float-right align-text-bottom secondary-text" style="font-size: 10px;">
                                     <font-awesome-icon icon="arrow-up"/>
                                     {{ post.source.likesCount }}
                                     &nbsp;&nbsp;

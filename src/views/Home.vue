@@ -15,16 +15,14 @@
         </b-carousel>-->
         <b-container fluid style="height: 100%">
             <b-row>
-                <b-col lg="6" style="height: 100vh; overflow-y: scroll; overflow-x: hidden;" data-elastic>
+                <b-col lg="12" style="height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
                         <PurdueExponent/>
-                        <HackerNews/>
-                        <Reddit/>
                         <ToDoList/>
+                        <HackerNews/>
+                        <GitHub/>
+                        <Reddit/>
                     </b-card-group>
-                </b-col>
-                <b-col lg="6">
-                    <PA/>
                 </b-col>
             </b-row>
         </b-container>
@@ -36,6 +34,7 @@
     import Reddit from '@/components/Reddit';
     import PurdueExponent from '@/components/PurdueExponent';
     import HackerNews from '@/components/HackerNews';
+    import GitHub from '@/components/GitHub';
     import ToDoList from '@/components/ToDoList';
     import PA from '@/components/PA';
     export default {
@@ -44,6 +43,7 @@
             Reddit,
             PurdueExponent,
             HackerNews,
+            GitHub,
             ToDoList,
             PA
         },
@@ -109,19 +109,23 @@
 
     @media (min-width: 992px) {
         .card-columns {
-            column-count: 2 !important;
+            column-count: 3 !important;
         }
     }
 
     @media (min-width: 1200px) {
         .card-columns {
-            column-count: 2 !important;
+            column-count: 4 !important;
         }
     }
 
     ::-webkit-scrollbar {
         width: 0;  /* remove scrollbar space */
         background: transparent;  /* optional: just make scrollbar invisible */
+    }
+
+    .secondary-text {
+        opacity: 0.7;
     }
 
 </style>
