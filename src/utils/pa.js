@@ -261,7 +261,6 @@ export function initModel(ref) {
         }
     }, 100);
 
-    ref.appendChild(renderer.view);
     document.body.onmousedown = setLeftButtonState;
     document.body.onmousemove = setLeftButtonState;
     document.body.onmouseup = setLeftButtonState;

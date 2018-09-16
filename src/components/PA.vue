@@ -5,8 +5,27 @@
 
 <script>
     import {live2dSprite, initModel, modelIndex, renderer, getRandomInt} from '@/utils/pa'
+    import moment from 'moment';
+    import {diningCourts, diningMenu} from '@/utils/dining';
     export default {
+    data () {
+        return {
+        skippedIntro: false
+        }
+    },
+    created() {
+    if (!live2dSprite.weInited) {
+        live2dSprite.weInited = true
+        initModel();
+    }
+    },
         mounted() {
+        this.$el.appendChild(renderer.view);
+        renderer.view.onmousedown = () => {
+        this.paClicked()
+        }
+        if (live2dSprite.eventAdded) return
+        live2dSprite.eventAdded = true
             let settings = {
                 id: 'show',
                 class: 'message',
@@ -18,10 +37,8 @@
                 closeOnClick: true,
             };
 
-            var skippedIntro = false;
-
             setTimeout( () => {
-                if (skippedIntro) return;
+                if (this.skippedIntro) return;
                 switch (modelIndex) {
                     case 0:
                         live2dSprite.startRandomMotionOnce('tap_body');
@@ -38,7 +55,7 @@
             }, 1000);
 
             setTimeout(() => {
-                if (skippedIntro) return;
+                if (this.skippedIntro) return;
                 switch (modelIndex) {
                     case 0:
                         live2dSprite.startRandomMotionOnce('flick_head');
@@ -52,9 +69,10 @@
                 }
                 this.$toast.show('Tomorrow will be <span style="color: lightskyblue; font-weight: bold">raining</span>. Don\'t forget your umbrella!');
             }, 4000);
-
-            let onClick = (evt) => {
-                skippedIntro = true;
+        },
+        methods: {
+        paClicked(evt) {
+                this.skippedIntro = true;
                 let point = null;
                 if (evt != null) point = evt.data.global;
                 if ((point == null) || (modelIndex == 0 && live2dSprite.hitTest(null, point.x, point.y))) {
@@ -71,6 +89,26 @@
                     }
                     this.$toast.show('How can I help?','', {
                         buttons: [
+                            ['<button>Food</button>', (instance, toast)=> {
+                                diningCourts().then(courts => {
+                                    let now = moment()
+                                    courts = courts.filter(court => {
+                                        return court.NextMeal.StartTime.diff(now, 'hours') < 5;
+                                    })
+                                    if (courts.length == 0) {
+                                        this.$toast.show("There's no dining courts opening right now.");
+                                        return
+                                    }
+                                    let courtToEat = courts[0]
+                                    let str = `Eat at ${courtToEat.Name}. `
+                                    if (courtToEat.NextMeal.StartTime.isAfter(now)) {
+                                        str += `They are going to serve ${courtToEat.NextMeal.Type} starting from ${courtToEat.NextMeal.StartTime.calendar()}`
+                                    } else {
+                                        str += `They are serving ${courtToEat.NextMeal.Type} until ${courtToEat.NextMeal.EndTime.calendar()}`
+                                    }
+                                    this.$toast.show(str)
+                                })
+                            }, true],
                             ['<button>Schedule</button>', (instance, toast)=> {
 
                                 this.$toast.show("(This feature is still in development!)");
@@ -114,13 +152,6 @@
                     });
                 }
             }
-
-            live2dSprite.on('click', (evt) => onClick(evt));
-            initModel(this.$el);
-            renderer.view.onmousedown = function () {
-                onClick();
-            };
-
         }
     }
 </script>
