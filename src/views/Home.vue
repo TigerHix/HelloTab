@@ -22,6 +22,8 @@
                         <HackerNews/>
                         <GitHub/>
                         <Reddit/>
+                        <Mail/>
+                        <Dining/>
                     </b-card-group>
                 </b-col>
             </b-row>
@@ -30,6 +32,8 @@
 </template>
 
 <script>
+import Dining from '@/components/Dining'
+import Mail from '@/components/Mail'
     import axios from 'axios';
     import Reddit from '@/components/Reddit';
     import PurdueExponent from '@/components/PurdueExponent';
@@ -45,7 +49,9 @@
             HackerNews,
             GitHub,
             ToDoList,
-            PA
+            PA,
+            Mail,
+            Dining,
         },
         data() {
             return {
@@ -53,12 +59,13 @@
             }
         },
         mounted () {
-            axios.get('/wallpaper.json')
-                .then(response => {
+    axios.get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
+    .then(response => {
                         this.wallpapers = response.data.images
                 });
         }
     }
+
 </script>
 
 <style lang="scss">
