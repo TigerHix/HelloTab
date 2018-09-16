@@ -2,8 +2,8 @@
     <Card fromColor="#1DA1F2" toColor="rgba(0,0,0,0)">
         <div slot="title">Trending on Twitter</div>
         <div class="table-responsive">
-            <table id="twitter_tags" class="table mb-2 table-hover table-sm table-dark bg-dark table-borderless"
-                   style="white-space: nowrap; height: 204px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
+            <table id="twitter_tags" class="table mb-0 table-hover table-sm table-dark bg-dark table-borderless"
+                   style="white-space: nowrap; height: 212px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
                 <tbody style="display: table; white-space: normal; width: 100%;">
                 <tr v-for="tag in tags">
                     <td style="padding-left: 1.25rem; padding-right: 1.25rem; line-height:1.0" scope=row>

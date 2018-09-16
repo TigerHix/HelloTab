@@ -1,6 +1,6 @@
 <template>
     <Card fromColor="#0078D7" toColor="rgba(0,0,0,0)">
-        <div slot="title">Outlook</div>
+        <div slot="title">Outlook Inbox</div>
         <!-- <b-button @click="login" style="position:relative;z-index: 512;margin: 1rem;">Click to sign in</b-button> -->
         <div id="email-list-group" style="padding-left: 0.5rem; padding-right: 0.5rem; height: 710px; overflow-y: scroll; overflow-x: hidden;">
             <div

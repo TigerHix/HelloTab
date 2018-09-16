@@ -2,8 +2,8 @@
     <Card fromColor="#ff6600" toColor="rgba(0,0,0,0)">
         <div slot="title">Hacker News</div>
         <div class="table-responsive">
-            <table id="hn_posts" class="table mb-2 table-hover table-sm table-dark bg-dark table-borderless"
-                   style="white-space: nowrap; height: 308px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
+            <table id="hn_posts" class="table mb-0 table-hover table-sm table-dark bg-dark table-borderless"
+                   style="white-space: nowrap; height: 316px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
                 <tbody style="display: table; white-space: normal;">
                 <tr v-for="post in posts">
                     <td style="padding-left: 1.25rem; padding-right: 1.25rem; line-height:1.0" scope=row>

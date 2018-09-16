@@ -1,8 +1,8 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
     <Card fromColor="#330044" toColor="rgba(0,0,0,0)">
         <!-- <h3 v-if='timeString' class="text-center" style="background:#3333FF"> {{ timeString }}</h3> -->
-        <div v-if="currentToday" slot="title">Classes Today</div>
-        <div v-else slot="title">Classes Tomorrow</div>
+        <div v-if="currentToday" slot="title">Classes today</div>
+        <div v-else slot="title">Classes tomorrow</div>
         <div style="position:absolute; right: 10px; top: 10px; z-index: 512;">
             <button v-if="currentToday" v-on:click="myChangeFunction"
                     class="btn btn-outline-light mx-1 my-1 float-right"

@@ -1,5 +1,25 @@
 <template>
     <div>
+        <b-modal lazy size="lg" v-model="showScheduleModal" id="mail_detail"
+                 title="Schedule a reminder?" style="position: relative; z-index: 5121;" @ok="scheduleReminder">
+            <form>
+                <div class="form-group">
+                    <label for="reminder-text">Reminder</label>
+                    <input class="form-control" v-model="reminderText" id="reminder-text" aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="select-time">Remind me in</label>
+                    <select class="form-control" v-model="reminderTime" id="select-time">
+                        <option>15 minutes</option>
+                        <option>30 minutes</option>
+                        <option>1 hour</option>
+                        <option>2 hours</option>
+                        <option>3 hours</option>
+                        <option>4 hours</option>
+                    </select>
+                </div>
+            </form>
+        </b-modal>
     </div>
 </template>
 
@@ -10,7 +30,10 @@
     export default {
     data () {
         return {
-        skippedIntro: false
+        skippedIntro: false,
+            showScheduleModal: false,
+            reminderText: "",
+            reminderTime: "",
         }
     },
     created() {
@@ -51,7 +74,7 @@
                         break;
                 }
 
-                this.$toast.show('Good evening, Tiger!');
+                this.$toast.show('Good afternoon, <span style="font-weight: bold;">Tiger</span>!');
             }, 1000);
 
             setTimeout(() => {
@@ -71,6 +94,10 @@
             }, 4000);
         },
         methods: {
+        scheduleReminder() {
+            this.reminderText = (" " + this.reminderText + " ").replace(/ my /ig, " your ").replace(/ me /ig, " you ").replace(/ I /ig, " you ");
+            this.$toast.show("Okay! I will remind you to <span style='font-weight:bold;'>" + this.reminderText.trim() + "</span> in <span style='font-weight:bold;'>" + this.reminderTime + "</span>.");
+        },
         paClicked(evt) {
                 this.skippedIntro = true;
                 let point = null;
@@ -100,18 +127,19 @@
                                         return
                                     }
                                     let courtToEat = courts[0]
-                                    let str = `Eat at ${courtToEat.Name}. `
+                                    let str = `Eat at ${courtToEat.Name}. `;
                                     if (courtToEat.NextMeal.StartTime.isAfter(now)) {
-                                        str += `They are going to serve ${courtToEat.NextMeal.Type} starting from ${courtToEat.NextMeal.StartTime.calendar()}`
+                                        str += `They are going to serve ${courtToEat.NextMeal.Type} starting from ${courtToEat.NextMeal.StartTime.calendar()}.`;
                                     } else {
-                                        str += `They are serving ${courtToEat.NextMeal.Type} until ${courtToEat.NextMeal.EndTime.calendar()}`
+                                        str += `They are serving ${courtToEat.NextMeal.Type} until ${courtToEat.NextMeal.EndTime.calendar()}. `;
+                                        str += (courtToEat.NextMeal.StartTime.diff(now, 'hours') <= 1) ? "Hurry!" : "";
                                     }
                                     this.$toast.show(str)
                                 })
                             }, true],
                             ['<button>Schedule</button>', (instance, toast)=> {
 
-                                this.$toast.show("(This feature is still in development!)");
+                                this.showScheduleModal = true;
 
                             }, true],
                             ['<button>Weather</button>', (instance, toast)=> {
@@ -186,7 +214,7 @@
     canvas {
         position: absolute;
         bottom: 0;
-        right: -160px;
+        right: -110px;
         z-index: 5120;
         image-rendering: optimizeSpeed;
         image-rendering: -moz-crisp-edges;

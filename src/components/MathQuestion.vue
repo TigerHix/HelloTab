@@ -1,6 +1,6 @@
 <template>
     <Card fromColor="#000080" toColor="rgba(0,0,0,0)">
-        <div slot="title">Math Quiz</div>
+        <div slot="title">Math Blitz!</div>
         <div id="math-quesion" class="mb-3 mx-3" style="z-index:100; position: relative;">
             <div class="row">
                 <div style="padding-left: 3rem;"

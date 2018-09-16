@@ -77,7 +77,8 @@
         mounted() {
             axios.get('https://www.reddit.com/r/funny/hot.json')
                 .then(response => {
-                    response.data.data.children.forEach(item => {
+                    // WE DON'T WANT OVERLONG TITLESe
+                    response.data.data.children.slice(2, response.data.data.children.length).forEach(item => {
                         if (item.data.pinned || item.data.stickied) return;
                         item.data.timeago = moment(item.data.created_utc * 1000).fromNow();
                         if (item.data.preview && item.data.preview.images && item.data.preview.images[0] && item.data.preview.images[0].source) {
