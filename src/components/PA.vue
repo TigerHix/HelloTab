@@ -8,7 +8,24 @@
     import moment from 'moment';
     import {diningCourts, diningMenu} from '@/utils/dining';
     export default {
+    data () {
+        return {
+        skippedIntro: false
+        }
+    },
+    created() {
+    if (!live2dSprite.weInited) {
+        live2dSprite.weInited = true
+        initModel();
+    }
+    },
         mounted() {
+        this.$el.appendChild(renderer.view);
+        renderer.view.onmousedown = () => {
+        this.paClicked()
+        }
+        if (live2dSprite.eventAdded) return
+        live2dSprite.eventAdded = true
             let settings = {
                 id: 'show',
                 class: 'message',
@@ -20,10 +37,8 @@
                 closeOnClick: true,
             };
 
-            var skippedIntro = false;
-
             setTimeout( () => {
-                if (skippedIntro) return;
+                if (this.skippedIntro) return;
                 switch (modelIndex) {
                     case 0:
                         live2dSprite.startRandomMotionOnce('tap_body');
@@ -40,7 +55,7 @@
             }, 1000);
 
             setTimeout(() => {
-                if (skippedIntro) return;
+                if (this.skippedIntro) return;
                 switch (modelIndex) {
                     case 0:
                         live2dSprite.startRandomMotionOnce('flick_head');
@@ -54,9 +69,10 @@
                 }
                 this.$toast.show('Tomorrow will be <span style="color: lightskyblue; font-weight: bold">raining</span>. Don\'t forget your umbrella!');
             }, 4000);
-
-            let onClick = (evt) => {
-                skippedIntro = true;
+        },
+        methods: {
+        paClicked(evt) {
+                this.skippedIntro = true;
                 let point = null;
                 if (evt != null) point = evt.data.global;
                 if ((point == null) || (modelIndex == 0 && live2dSprite.hitTest(null, point.x, point.y))) {
@@ -136,9 +152,6 @@
                     });
                 }
             }
-
-            live2dSprite.on('click', (evt) => onClick(evt));
-            initModel(this.$el);
         }
     }
 </script>
