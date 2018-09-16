@@ -2,8 +2,8 @@
 
 A powerful and intuitive new tab extension for Chrome and Firefox.
 
-![https://i.imgur.com/TEOTayc.png]()
-![https://i.imgur.com/kdQcvXJ.png]()
+![](https://i.imgur.com/TEOTayc.png)
+![](https://i.imgur.com/kdQcvXJ.png)
 
 ## Project setup
 ```
