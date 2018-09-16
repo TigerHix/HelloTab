@@ -1,75 +1,144 @@
 <template>
-  <div>
-  <b-container fluid>
-    <b-row>
-      <b-col md="8">
-        <b-card-group columns>
-          <Reddit/>
-          <ToDoList/>
-          <Weather/>
-          <Calendar/>
-        </b-card-group>
-      </b-col>
-    </b-row>
-  </b-container>
-  <b-carousel id="background-carousel"
-                background="#ababab"
-                :interval="10000"
-                img-width="100%"
-                img-height="100%"
-    >
-      <!-- Text slides with image -->
-      <b-carousel-slide v-for="image in wallpapers"
-                        :key="image.hsh"
-                        :caption="image.title"
-                        :img-src="'//www.bing.com' + image.url"
-      ></b-carousel-slide>
-    </b-carousel>
-</div>
+    <div style="overflow-y: hidden; overflow-x: hidden; background: #212529">
+        <!--<b-carousel id="background-carousel"
+                    background="#ababab"
+                    :interval="10000"
+                    img-width="100%"
+                    img-height="100%"
+        >
+            &lt;!&ndash; Text slides with image &ndash;&gt;
+            <b-carousel-slide v-for="image in wallpapers"
+                              :key="image.hsh"
+                              :caption="image.title"
+                              :img-src="'//www.bing.com' + image.url"
+            ></b-carousel-slide>
+        </b-carousel>-->
+        <b-container fluid style="height: 100%">
+            <b-row>
+                <b-col lg="12" style="height: 100vh; overflow-y: hidden; overflow-x: hidden;">
+                    <b-card-group columns>
+                        <Calendar/>
+                        <Weather/>
+                        <PurdueExponent/>
+                        <ToDoList/>
+                        <HackerNews/>
+                        <GitHub/>
+                        <Reddit/>
+                        <Mail/>
+                        <Dining/>
+                    </b-card-group>
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
 </template>
 
 <script>
-import axios from 'axios'
-import Reddit from '@/components/Reddit'
-import ToDoList from '@/components/ToDoList'
-import Calendar from '@/components/Calendar'
-import Weather from '@/components/Weather'
-export default {
-  name: 'home',
-  components: {
-    Reddit,
-    ToDoList,
-    Weather,
-    Calendar
-  },
-  data() {
-    return {
-      wallpapers: []
+    import Dining from '@/components/Dining'
+    import Mail from '@/components/Mail'
+    import axios from 'axios';
+    import Reddit from '@/components/Reddit';
+    import PurdueExponent from '@/components/PurdueExponent';
+    import HackerNews from '@/components/HackerNews';
+    import GitHub from '@/components/GitHub';
+    import ToDoList from '@/components/ToDoList';
+    import PA from '@/components/PA';
+    import Calendar from '@/components/Calendar'
+    import Weather from '@/components/Weather'
+    export default {
+        name: 'home',
+        components: {
+            Reddit,
+            PurdueExponent,
+            HackerNews,
+            GitHub,
+            ToDoList,
+            PA,
+            Mail,
+            Dining,
+            Weather,
+            Calendar
+        },
+        data() {
+            return {
+                wallpapers: []
+            }
+        },
+        mounted () {
+          axios.get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
+          .then(response => {
+                              this.wallpapers = response.data.images
+                      });
+        }
     }
-  },
-  mounted () {
-    //axios.get('https://crossorigin.me/https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
-    axios.get('/wallpaper.json')
-    .then(response => {
-      this.wallpapers = response.data.images
-    })
-  },
-}
+
 </script>
 
 <style lang="scss">
-  #background-carousel {
-    z-index: -100;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
+
+    body {
+        overflow: hidden;
     }
-  }
+
+    #background-carousel {
+        z-index: -100;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+    img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        filter: brightness(0.2);
+    }
+
+    }
+
+    .card {
+        margin-top: 1rem !important;
+        margin-bottom: 0 !important;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .5);
+    }
+
+    .carousel-inner, .carousel-item {
+        height: 100%;
+    }
+
+    @media (min-width: 576px) {
+        .card-columns {
+            column-count: 1 !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .card-columns {
+            column-count: 2 !important;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .card-columns {
+            column-count: 3 !important;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .card-columns {
+            column-count: 4 !important;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;  /* remove scrollbar space */
+        background: transparent;  /* optional: just make scrollbar invisible */
+    }
+
+    .secondary-text {
+        opacity: 0.7;
+    }
+
 </style>

@@ -1,11 +1,10 @@
 <template>
-    <Card>
-      <div slot="title">Reddit</div>
-        <p class="p-3 mb-0" style="font-weight: bold; font-size: 18px; z-index: 100; position: relative;">Reddit</p>
+    <Card fromColor="#ff4400" toColor="rgba(0,0,0,0)">
+        <div slot="title">Reddit</div>
         <div id="reddit_threads" style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
 
             <div v-for="thread in threads" class="thread-card bg-dark text-white p-0 mx-2 mt-0 mb-2"
-                 style="position: relative; overflow: hidden;">
+                 style="position: relative; overflow: hidden; z-index: 512">
 
                 <div style="width: 100%; height: 85px !important;">
 
@@ -38,10 +37,10 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <p class="mb-0" style="font-size: 10px;white-space: pre-wrap;">{{ thread.timeago }}</p>
+                                <p class="mb-0 secondary-text" style="font-size: 10px;white-space: pre-wrap;">{{ thread.timeago }}</p>
                             </div>
                             <div class="col-sm-6">
-                                <p class="mb-0 float-right align-text-bottom" style="font-size: 10px;">
+                                <p class="mb-0 float-right align-text-bottom secondary-text" style="font-size: 10px;">
                                     <font-awesome-icon icon="arrow-up"/>
                                     {{ thread.score }}
                                     &nbsp;&nbsp;
@@ -67,7 +66,6 @@
     import SimpleBar from 'simplebar';
     import 'simplebar/dist/simplebar.css';
     export default {
-        name: 'home',
         data() {
             return {
                 threads: []
@@ -77,9 +75,10 @@
             Card
         },
         mounted() {
-            axios.get('https://www.reddit.com/r/purdue/hot.json')
+            axios.get('https://www.reddit.com/r/funny/hot.json')
                 .then(response => {
                     response.data.data.children.forEach(item => {
+                        if (item.data.pinned || item.data.stickied) return;
                         item.data.timeago = moment(item.data.created_utc * 1000).fromNow();
                         if (item.data.preview && item.data.preview.images && item.data.preview.images[0] && item.data.preview.images[0].source) {
                             if (!item.data.preview.images[0].source.url.includes('.gif'))
@@ -90,7 +89,7 @@
                         }
                         this.threads.push(item.data);
                         this.$nextTick(function () {
-                            new SimpleBar(document.getElementById('reddit_threads'))
+                            //new SimpleBar(document.getElementById('reddit_threads'))
                         });
                     });
                 });
