@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from './views/Home.vue'
 import MSAuth from './views/MSAuth.vue'
+import PA from './components/PA.vue'
 
 Vue.use(Router)
 
@@ -19,6 +20,11 @@ export default new Router({
       path: '/msauth',
       name: 'msauth',
       component: MSAuth,
+    },
+    {
+      path: '/pa',
+      name: 'pa',
+      component: PA
     }
   ]
 })

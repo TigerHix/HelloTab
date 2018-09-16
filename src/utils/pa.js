@@ -1,4 +1,4 @@
-const renderer = new PIXI.WebGLRenderer(
+export const renderer = new PIXI.WebGLRenderer(
     {
         "width": 800,
         "height": 600,
@@ -8,7 +8,7 @@ const renderer = new PIXI.WebGLRenderer(
 );
 PIXI.settings.RESOLUTION = window.devicePixelRatio;
 
-var modelIndex = 2;
+export var modelIndex = 2;
 
 const stage = new PIXI.Container();
 let models = {};
@@ -207,14 +207,14 @@ function setLeftButtonState(e) {
         : e.buttons === 1;
 }
 
-const live2dSprite = new PIXI.Live2DSprite(models[modelIndex], {
+export const live2dSprite = new PIXI.Live2DSprite(models[modelIndex], {
     debugLog: true,
     randomMotion: true,
     eyeBlink: false
     // audioPlayer: (...args) => console.log(...args)
 });
 
-function initModel() {
+export function initModel(ref) {
     stage.addChild(live2dSprite);
     live2dSprite.adjustScale(0, 0, 1);
     live2dSprite.adjustTranslate(0, 0);
@@ -261,7 +261,7 @@ function initModel() {
         }
     }, 100);
 
-    document.getElementById('app').appendChild(renderer.view);
+    ref.appendChild(renderer.view);
     document.body.onmousedown = setLeftButtonState;
     document.body.onmousemove = setLeftButtonState;
     document.body.onmouseup = setLeftButtonState;
