@@ -54,7 +54,7 @@
                         item.timeago = moment(item.source.createdAt).fromNow();
                         this.posts.push(item);
                         this.$nextTick(function () {
-                            new SimpleBar(document.getElementById('hn_posts'))
+                            new SimpleBar(document.getElementById('hn_posts'), { scrollbarMaxSize: 40 })
                         });
                     });
                 });

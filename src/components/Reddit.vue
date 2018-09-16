@@ -89,7 +89,7 @@
                         }
                         this.threads.push(item.data);
                         this.$nextTick(function () {
-                            //new SimpleBar(document.getElementById('reddit_threads'))
+                            new SimpleBar(document.getElementById('reddit_threads'))
                         });
                     });
                 });

@@ -16,7 +16,7 @@
             </div>
             <div class="input-group mb-0 p-3" style="padding-top: 0.5rem !important; padding-bottom: 0.8rem !important;">
                 <input id="addItemForm" type="text" class="form-control" placeholder="Enter a task..." aria-label="Task" style="background: none; color: white;">
-                <div class="input-group-append"><ToDoList/>
+                <div class="input-group-append">
                     <button @click="addListItem" class="btn btn-outline-light" type="button">Add</button>
                 </div>
             </div>
@@ -41,7 +41,7 @@
     };
 
     export default {
-        name: 'home',
+        name: 'todo',
 
         components: {
             Card
