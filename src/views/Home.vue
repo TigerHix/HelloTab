@@ -17,6 +17,8 @@
             <b-row>
                 <b-col lg="11" style="padding: 0 0 0 1rem; height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
+                        <Calendar/>
+                        <Weather/>
                         <PurdueExponent/>
                         <HackerNews/>
                         <GitHub/>
