@@ -14,8 +14,12 @@
       <li class="list-group-item text-muted" style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
         <input id="addItemForm" class="form-control" type="text" placeholder="Write your note here">
       </li>
-      <button type="button" @click="addListItem" class="btn btn-outline-dark list-group-item">Add Item</button>
+
     </ul>
+    <div class="btn-group mt-3" role="group" style="width:100%;">
+      <button type="button" @click="recoverListItems" class="btn btn-outline-dark">Recover Items</button>
+      <button type="button" @click="addListItem" class="btn btn-outline-primary btn-block">Add Item</button>
+    </div>
   </Card>
 </template>
 
@@ -49,6 +53,14 @@ export default {
         this.items.push(newItem);                             // add content object to items array containing all To-Do List items
         document.getElementById('addItemForm').value = "";    // reset input box value
       }
+
+      // puts all ToDo text content into a single array
+      var currentToDoListItems = [];
+      for(var i = 0; i < this.items.length; i++) {
+        currentToDoListItems[i] = this.items[i].noteContent;
+      }
+
+      window.localStorage.setItem('currentToDoListItems', currentToDoListItems);
     },
 
     editListItem() {
@@ -56,9 +68,24 @@ export default {
     },
 
     deleteListItem(item) {
-      console.log(item);
       this.items = this.items.filter(i => i != item);
+    },
+
+    recoverListItems() {
+      var currentToDoListItems = window.localStorage.getItem('currentToDoListItems').split(",");
+      for(var i = 0; i < currentToDoListItems.length; i++) {
+        var newItem = {noteContent: currentToDoListItems[i] };
+        this.items.push(newItem);
+      }
     }
-  }
+  },
+
+  mounted() {
+    var currentToDoListItems = window.localStorage.getItem('currentToDoListItems').split(",");
+    for(var i = 0; i < currentToDoListItems.length; i++) {
+      var newItem = {noteContent: currentToDoListItems[i] };
+      this.items.push(newItem);
+    }
+  },
 }
 </script>
