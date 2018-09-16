@@ -1,6 +1,5 @@
 <template>
     <div style="overflow-y: hidden; overflow-x: hidden; background: #212529">
-    <b-button id="anime" to="pa">Anime</b-button>
         <!--<b-carousel id="background-carousel"
                     background="#ababab"
                     :interval="10000"
@@ -14,19 +13,21 @@
                               :img-src="'//www.bing.com' + image.url"
             ></b-carousel-slide>
         </b-carousel>-->
-        <b-container fluid style="height: 100%">
+        <b-container fluid style="height: 100%; width: 100%;">
             <b-row>
-                <b-col lg="12" style="height: 100vh; overflow-y: hidden; overflow-x: hidden;">
+                <b-col lg="11" style="padding: 0 0 0 1rem; height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
                         <PurdueExponent/>
                         <HackerNews/>
                         <GitHub/>
                         <Reddit/>
-                        <Dining/>
                         <Mail/>
                         <ToDoList/>
-
                     </b-card-group>
+                </b-col>
+                <b-col lg="1" style="padding: 0 0 0 1rem; height: 100vh; width: 100%;  opacity: 0.3; margin: auto; display: flex; align-items: center;">
+                    <b-button id="next-page" to="pa"
+                              style="border-radius: 0; height: 80px; width: 80px; border-radius: 40px; display: flex; align-items: center;"><font-awesome-icon icon="arrow-right" style="width: 100%; height: 100%; transform: scale(0.5, 0.5);"/></b-button>
                 </b-col>
             </b-row>
         </b-container>
@@ -34,15 +35,12 @@
 </template>
 
 <script>
-import Dining from '@/components/Dining'
-import Mail from '@/components/Mail'
+    import Mail from '@/components/Mail'
     import axios from 'axios';
     import Reddit from '@/components/Reddit';
     import PurdueExponent from '@/components/PurdueExponent';
     import HackerNews from '@/components/HackerNews';
     import GitHub from '@/components/GitHub';
-    import ToDoList from '@/components/ToDoList';
-    import PA from '@/components/PA';
     export default {
         name: 'home',
         components: {
@@ -50,10 +48,7 @@ import Mail from '@/components/Mail'
             PurdueExponent,
             HackerNews,
             GitHub,
-            ToDoList,
-            PA,
-            Mail,
-            Dining,
+            Mail
         },
         data() {
             return {
@@ -61,9 +56,9 @@ import Mail from '@/components/Mail'
             }
         },
         mounted () {
-    axios.get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
-    .then(response => {
-                        this.wallpapers = response.data.images
+            axios.get('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
+                .then(response => {
+                    this.wallpapers = response.data.images
                 });
         }
     }
@@ -135,8 +130,8 @@ import Mail from '@/components/Mail'
     }
 
     ::-webkit-scrollbar {
-        width: 0;  /* remove scrollbar space */
-        background: transparent;  /* optional: just make scrollbar invisible */
+        width: 0; /* remove scrollbar space */
+        background: transparent; /* optional: just make scrollbar invisible */
     }
 
     .secondary-text {
