@@ -1,5 +1,10 @@
 # hello_tab
 
+A powerful and intuitive new tab extension for Chrome and Firefox.
+
+![](https://i.imgur.com/TEOTayc.png)
+![](https://i.imgur.com/kdQcvXJ.png)
+
 ## Project setup
 ```
 yarn install
