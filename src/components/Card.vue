@@ -19,7 +19,6 @@
                             height: 33%;
                             background: linear-gradient(to top, rgb(52,58,64), rgba(0,0,0,0) 100%);
                             border-radius: 4px 4px 0 0;
-                            z-index:-1;
                             ">
 
         </div>
@@ -31,7 +30,6 @@
                             height: 67%;
                             border-radius: 0 0 4px 4px;
                             background: rgb(52,58,64);
-                            z-index:-1;
                             ">
         </div>
 
