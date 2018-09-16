@@ -1,11 +1,10 @@
 <template>
-    <Card>
-      <div slot="title">Reddit</div>
-        <p class="p-3 mb-0" style="font-weight: bold; font-size: 18px; z-index: 100; position: relative;">Reddit</p>
+    <Card fromColor="#ff4400" toColor="rgba(0,0,0,0)">
+        <div slot="title">Reddit</div>
         <div id="reddit_threads" style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
 
             <div v-for="thread in threads" class="thread-card bg-dark text-white p-0 mx-2 mt-0 mb-2"
-                 style="position: relative; overflow: hidden;">
+                 style="position: relative; overflow: hidden; z-index: 512">
 
                 <div style="width: 100%; height: 85px !important;">
 

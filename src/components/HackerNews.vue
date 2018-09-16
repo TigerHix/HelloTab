@@ -1,10 +1,9 @@
 <template>
-    <Card>
-        <p class="p-3 mb-0" style="font-weight: bold; font-size: 18px; z-index: 100; position: relative;">Hacker
-            News</p>
+    <Card fromColor="#ff6600" toColor="rgba(0,0,0,0)">
+        <div slot="title">Hacker News</div>
         <div class="table-responsive">
             <table id="hn_posts" class="table table-hover table-sm table-dark bg-dark table-borderless"
-                   style="white-space: nowrap; height: 200px; overflow-y: scroll; overflow-x: hidden;">
+                   style="white-space: nowrap; height: 200px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
                 <tbody style="display: table; white-space: normal;">
                 <tr v-for="post in posts">
                     <td style="padding-left: 1.25rem; padding-right: 1.25rem; line-height:1.0" scope=row>
