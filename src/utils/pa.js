@@ -8,7 +8,7 @@ export const renderer = new PIXI.WebGLRenderer(
 );
 PIXI.settings.RESOLUTION = window.devicePixelRatio;
 
-export var modelIndex = 2;
+export var modelIndex = 1;
 
 const stage = new PIXI.Container();
 let models = {};
@@ -274,6 +274,6 @@ function animate() {
     renderer.render(stage);
 }
 
-function getRandomInt(min, max) {
+export function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
