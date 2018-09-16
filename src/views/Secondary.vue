@@ -1,6 +1,5 @@
 <template>
     <div style="overflow-y: hidden; overflow-x: hidden; background: #212529">
-    	<PA/>
         <b-container fluid style="height: 100%; width: 100%;">
             <b-row>
                 <b-col lg="1"
@@ -14,6 +13,7 @@
                 <b-col lg="11" style="padding: 0 0 0 1rem; height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
                         <ToDoList/>
+                        <MathQuestion/>
                         <Calendar/>
                         <Weather/>
                         <Dining/>
@@ -21,6 +21,7 @@
                 </b-col>
             </b-row>
         </b-container>
+        <PA/>
     </div>
 </template>
 
@@ -31,6 +32,7 @@ import Calendar from '@/components/Calendar'
 import Weather from '@/components/Weather'
 import Dining from '@/components/Dining'
 import PA from '@/components/PA'
+import MathQuestion from '@/components/MathQuestion';
 export default {
     components: {
         ToDoList,
@@ -38,6 +40,7 @@ export default {
         Weather,
         Dining,
         PA,
+        MathQuestion,
     },
 }
 </script>

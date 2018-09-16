@@ -23,7 +23,6 @@
                         <Reddit/>
                         <Mail/>
                         <TwitterFeed/>
-                        <MathQuestion/>
                     </b-card-group>
                 </b-col>
                 <b-col lg="1" style="padding: 0 0 0 1rem; height: 100vh; width: 100%;  opacity: 0.3; margin: auto; display: flex; align-items: center;">
@@ -43,7 +42,6 @@
     import HackerNews from '@/components/HackerNews';
     import GitHub from '@/components/GitHub';
     import PA from '@/components/PA';
-    import MathQuestion from '@/components/MathQuestion';
     import TwitterFeed from '@/components/TwitterFeed';
     export default {
         name: 'home',
@@ -54,7 +52,6 @@
             GitHub,
             PA,
             Mail,
-            MathQuestion,
             TwitterFeed,
         },
         data() {

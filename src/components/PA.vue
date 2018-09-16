@@ -5,6 +5,8 @@
 
 <script>
     import {live2dSprite, initModel, modelIndex, renderer, getRandomInt} from '@/utils/pa'
+    import moment from 'moment';
+    import {diningCourts, diningMenu} from '@/utils/dining';
     export default {
         mounted() {
             let settings = {
@@ -71,6 +73,26 @@
                     }
                     this.$toast.show('How can I help?','', {
                         buttons: [
+                            ['<button>Food</button>', (instance, toast)=> {
+                                diningCourts().then(courts => {
+                                    let now = moment()
+                                    courts = courts.filter(court => {
+                                        return court.NextMeal.StartTime.diff(now, 'hours') < 5;
+                                    })
+                                    if (courts.length == 0) {
+                                        this.$toast.show("There's no dining courts opening right now.");
+                                        return
+                                    }
+                                    let courtToEat = courts[0]
+                                    let str = `Eat at ${courtToEat.Name}. `
+                                    if (courtToEat.NextMeal.StartTime.isAfter(now)) {
+                                        str += `They are going to serve ${courtToEat.NextMeal.Type} starting from ${courtToEat.NextMeal.StartTime.calendar()}`
+                                    } else {
+                                        str += `They are serving ${courtToEat.NextMeal.Type} until ${courtToEat.NextMeal.EndTime.calendar()}`
+                                    }
+                                    this.$toast.show(str)
+                                })
+                            }, true],
                             ['<button>Schedule</button>', (instance, toast)=> {
 
                                 this.$toast.show("(This feature is still in development!)");
@@ -117,10 +139,6 @@
 
             live2dSprite.on('click', (evt) => onClick(evt));
             initModel(this.$el);
-            renderer.view.onmousedown = function () {
-                onClick();
-            };
-
         }
     }
 </script>
