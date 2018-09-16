@@ -3,7 +3,7 @@
         <div slot="title">Hacker News</div>
         <div class="table-responsive">
             <table id="hn_posts" class="table mb-2 table-hover table-sm table-dark bg-dark table-borderless"
-                   style="white-space: nowrap; height: 220px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
+                   style="white-space: nowrap; height: 308px; overflow-y: scroll; overflow-x: hidden; background-color: unset !important">
                 <tbody style="display: table; white-space: normal;">
                 <tr v-for="post in posts">
                     <td style="padding-left: 1.25rem; padding-right: 1.25rem; line-height:1.0" scope=row>
@@ -54,7 +54,7 @@
                         item.timeago = moment(item.source.createdAt).fromNow();
                         this.posts.push(item);
                         this.$nextTick(function () {
-                            new SimpleBar(document.getElementById('hn_posts'), { scrollbarMaxSize: 40 })
+                            new SimpleBar(document.getElementById('hn_posts'))
                         });
                     });
                 });

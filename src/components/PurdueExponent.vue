@@ -65,7 +65,8 @@
         mounted() {
             axios.get('https://www.purdueexponent.org/search/?q=&nsa=eedition&t=article&l=10&s=start_time&sd=desc&f=json&c[]=campus')
                 .then(response => {
-                    response.data.rows.forEach(item => {
+                    // WE DON'T WANT WOMEN ARRESTED AT WALC
+                    response.data.rows.slice(1, response.data.rows.length).forEach(item => {
                         item.timeago = moment(item.starttime.iso8601).fromNow();
                         if (item.preview.url == null) return;
                         item.cover = item.preview.url;

@@ -18,9 +18,10 @@
                 <b-col lg="11" style="padding: 0 0 0 1rem; height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
                         <PurdueExponent/>
+                        <Reddit/>
+                        <Twitter/>
                         <HackerNews/>
                         <GitHub/>
-                        <Reddit/>
                         <Mail/>
                         <TwitterFeed/>
                     </b-card-group>
@@ -79,6 +80,7 @@
 
     body {
         overflow: hidden;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     }
 
     #background-carousel {
