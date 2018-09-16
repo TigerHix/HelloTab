@@ -17,18 +17,17 @@
             <b-row>
                 <b-col lg="11" style="padding: 0 0 0 1rem; height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
-                        <Calendar/>
-                        <Weather/>
                         <PurdueExponent/>
                         <HackerNews/>
                         <GitHub/>
                         <Reddit/>
                         <Mail/>
-                        <ToDoList/>
+                        <TwitterFeed/>
+                        <MathQuestion/>
                     </b-card-group>
                 </b-col>
                 <b-col lg="1" style="padding: 0 0 0 1rem; height: 100vh; width: 100%;  opacity: 0.3; margin: auto; display: flex; align-items: center;">
-                    <b-button id="next-page" to="pa"
+                    <b-button id="next-page" :to="{name:'secondary'}"
                               style="border-radius: 0; height: 80px; width: 80px; border-radius: 40px; display: flex; align-items: center;"><font-awesome-icon icon="arrow-right" style="width: 100%; height: 100%; transform: scale(0.5, 0.5);"/></b-button>
                 </b-col>
             </b-row>
@@ -43,6 +42,9 @@
     import PurdueExponent from '@/components/PurdueExponent';
     import HackerNews from '@/components/HackerNews';
     import GitHub from '@/components/GitHub';
+    import PA from '@/components/PA';
+    import MathQuestion from '@/components/MathQuestion';
+    import TwitterFeed from '@/components/TwitterFeed';
     export default {
         name: 'home',
         components: {
@@ -50,7 +52,10 @@
             PurdueExponent,
             HackerNews,
             GitHub,
-            Mail
+            PA,
+            Mail,
+            MathQuestion,
+            TwitterFeed,
         },
         data() {
             return {

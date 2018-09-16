@@ -4,8 +4,8 @@
         <div id="todo">
             <div v-for="item in items" class="todo-item text-white">
                 <div class="row">
-                    <div class="col-10" @click="editListItem">
-                        <input type="text" name="" :value="item.noteContent"
+                    <div class="col-10">
+                        <input type="text" name="" :value="item"
                                style="background: transparent; border: none;">
                     </div>
                     <div class="col-2 text-muted text-center" style="display: flex; align-items: center;">
@@ -15,31 +15,19 @@
                 </div>
             </div>
             <div class="input-group mb-0 p-3" style="padding-top: 0.5rem !important; padding-bottom: 0.8rem !important;">
-                <input id="addItemForm" type="text" class="form-control" placeholder="Enter a task..." aria-label="Task" style="background: none; color: white;">
+                <input v-model="addNewText" id="addItemForm" type="text" class="form-control" placeholder="Enter a task..." aria-label="Task" style="background: none; color: white;">
                 <div class="input-group-append">
                     <button @click="addListItem" class="btn btn-outline-light" type="button">Add</button>
                 </div>
             </div>
         </div>
-    </Card>
+      </li>
+    </ul>
+  </Card>
 </template>
 
 <script>
-    const STORAGE_KEY = 'hello-tab-todo';
     import Card from '@/components/Card';
-    var todoStorage = {
-        fetch: function () {
-            var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            todos.forEach(function (todo) {
-                this.items.push(todo);
-            });
-            return todos;
-        },
-        save: function (todos) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
-        }
-    };
-
     export default {
         name: 'todo',
 
@@ -52,36 +40,30 @@
                 items: [
                     // blank array of items
                 ],
+                addNewText: '',
             }
         },
-
-        mounted() {
-
-        },
-
         methods: {
-            addListItem() {
-                var inputBox = document.getElementById('addItemForm');  // get input box DOM item
-                var newItemText = inputBox.value;                       // get input box value
-                if (newItemText !== "") {                               // if input box is not blank
-                    var newItem = {noteContent: newItemText};            // set content
-                    this.items.push(newItem);                             // add content object to items array containing all To-Do List items
-                    document.getElementById('addItemForm').value = "";    // reset input box value
-                }
+              addListItem() {
+      var newItemText = this.addNewText                       // get input box value
+      if (newItemText !== "") {
+        this.items.push(newItemText);                             // add content object to items array containing all To-Do List items
+        this.addNewText = ''
+      }
+      localStorage.setItem('currentToDoListItems', JSON.stringify(this.items));
+    },
 
+    deleteListItem(item) {
+      this.items = this.items.filter(i => i != item);
+    },
+  },
 
-            },
-
-            editListItem() {
-
-            },
-
-            deleteListItem(item) {
-                console.log(item);
-                this.items = this.items.filter(i => i != item);
-            }
-        }
-    }
+  mounted() {
+    let items = JSON.parse(localStorage.getItem('currentToDoListItems'))
+    if (!items) return
+      this.items = items
+  },
+}
 </script>
 
 <style>
