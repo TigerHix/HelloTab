@@ -23,9 +23,11 @@ export default {
   },
 
   mounted() {
+    /*
     var twitterFeedScript = document.createElement('script');
     twitterFeedScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
     document.head.appendChild(twitterFeedScript);
+    */
   },
 }
 </script>
