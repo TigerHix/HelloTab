@@ -41,7 +41,6 @@ export default {
     })
     .then(response => {
       this.mails = response.data.value
-      console.log(JSON.parse(JSON.stringify(this.mails)))
     })
     .catch(error => {
       console.log(error)
