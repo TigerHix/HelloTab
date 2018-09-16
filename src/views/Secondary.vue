@@ -1,8 +1,9 @@
 <template>
     <div style="overflow-y: hidden; overflow-x: hidden; background: #212529">
+        <img src="secondary.jpg" style="position: absolute; height: 100%; width: 100%; object-fit: cover; filter: brightness(0.8);"/>
         <b-container fluid style="height: 100%; width: 100%;">
             <b-row>
-                <b-col lg="11" style="padding: 0 0 0 1rem; height: 100vh; overflow-y: hidden; overflow-x: hidden;">
+                <b-col lg="8" style="padding: 0 0 0 1rem; height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
                         <ToDoList/>
                         <MathQuestion/>
@@ -102,7 +103,7 @@ export default {
 
     @media (min-width: 1200px) {
         .card-columns {
-            column-count: 4 !important;
+            column-count: 3 !important;
         }
     }
 

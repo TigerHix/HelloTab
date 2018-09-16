@@ -1,5 +1,6 @@
 <template>
     <div style="overflow-y: hidden; overflow-x: hidden; background: #212529">
+        <img src="primary.jpg" style="position: absolute; height: 100%; width: 100%; object-fit: cover; filter: brightness(0.8);"/>
         <!--<b-carousel id="background-carousel"
                     background="#ababab"
                     :interval="10000"
