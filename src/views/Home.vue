@@ -18,12 +18,13 @@
                 <b-col lg="12" style="height: 100vh; overflow-y: hidden; overflow-x: hidden;">
                     <b-card-group columns>
                         <PurdueExponent/>
-                        <ToDoList/>
                         <HackerNews/>
                         <GitHub/>
                         <Reddit/>
-                        <Mail/>
                         <Dining/>
+                        <Mail/>
+                        <ToDoList/>
+
                     </b-card-group>
                 </b-col>
             </b-row>
@@ -133,6 +134,10 @@ import Mail from '@/components/Mail'
 
     .secondary-text {
         opacity: 0.7;
+    }
+
+    .simplebar-scroll-content {
+        margin-bottom: unset !important;
     }
 
 </style>
