@@ -25,7 +25,8 @@
                         <Dining/>
                         <Mail/>
                         <ToDoList/>
-
+                        <TwitterFeed/>
+                        <MathQuestion/>
                     </b-card-group>
                 </b-col>
             </b-row>
@@ -43,6 +44,8 @@ import Mail from '@/components/Mail'
     import GitHub from '@/components/GitHub';
     import ToDoList from '@/components/ToDoList';
     import PA from '@/components/PA';
+    import MathQuestion from '@/components/MathQuestion';
+    import TwitterFeed from '@/components/TwitterFeed';
     export default {
         name: 'home',
         components: {
@@ -54,6 +57,8 @@ import Mail from '@/components/Mail'
             PA,
             Mail,
             Dining,
+            MathQuestion,
+            TwitterFeed,
         },
         data() {
             return {

@@ -4,7 +4,7 @@
         <div id="todo">
             <div v-for="item in items" class="todo-item text-white">
                 <div class="row">
-                    <div class="col-10" @click="editListItem">
+                    <div class="col-10">
                         <input type="text" name="" :value="item.noteContent"
                                style="background: transparent; border: none;">
                     </div>
@@ -21,7 +21,16 @@
                 </div>
             </div>
         </div>
-    </Card>
+      </li>
+      <li class="list-group-item text-muted" style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
+        <input id="addItemForm" class="form-control" type="text" placeholder="Write your note here">
+      </li>
+
+    </ul>
+    <div class="btn-group mt-3" role="group" style="width:100%;">
+      <button type="button" @click="addListItem" class="btn btn-outline-primary btn-block">Add Item</button>
+    </div>
+  </Card>
 </template>
 
 <script>
@@ -55,7 +64,24 @@
             }
         },
 
-        mounted() {
+  methods: {
+    addListItem() {
+      var inputBox = document.getElementById('addItemForm');  // get input box DOM item
+      var newItemText = inputBox.value;                       // get input box value
+      if (newItemText !== "") {                               // if input box is not blank
+        var newItem = {noteContent: newItemText };            // set content
+        this.items.push(newItem);                             // add content object to items array containing all To-Do List items
+        document.getElementById('addItemForm').value = "";    // reset input box value
+      }
+
+      // puts all ToDo text content into a single array
+      var currentToDoListItems = [];
+      for(var i = 0; i < this.items.length; i++) {
+        currentToDoListItems[i] = this.items[i].noteContent;
+      }
+
+      localStorage.setItem('currentToDoListItems', currentToDoListItems);
+    },
 
         },
 
@@ -68,20 +94,32 @@
                     this.items.push(newItem);                             // add content object to items array containing all To-Do List items
                     document.getElementById('addItemForm').value = "";    // reset input box value
                 }
+              },
 
+    deleteListItem(item) {
+      this.items = this.items.filter(i => i != item);
+    },
 
-            },
-
-            editListItem() {
-
-            },
-
-            deleteListItem(item) {
-                console.log(item);
-                this.items = this.items.filter(i => i != item);
-            }
-        }
+    recoverListItems() {
+    let items = localStorage.getItem('currentToDoListItems') || ''
+      let currentToDoListItems = items.split(",");
+      for(var i = 0; i < currentToDoListItems.length; i++) {
+        var newItem = {noteContent: currentToDoListItems[i] };
+        this.items.push(newItem);
+      }
     }
+  },
+
+  mounted() {
+    let items = localStorage.getItem('currentToDoListItems')
+    if (!items) return
+    items = items.split(",");
+    for(var i = 0; i < items.length; i++) {
+      var newItem = {noteContent: items[i] };
+      this.items.push(newItem);
+    }
+  },
+}
 </script>
 
 <style>
