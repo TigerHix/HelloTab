@@ -1,4 +1,4 @@
-# hello_tab
+# HelloTab
 
 A powerful and intuitive new tab extension for Chrome and Firefox.
 
